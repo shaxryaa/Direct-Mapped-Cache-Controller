@@ -93,5 +93,5 @@ this machine; their sources are `scripts/build_report.py` and
 `scripts/build_slides.mjs`. The Markdown report and all verification sources are
 portable. `docs/REPORT.md` can also be exported to PDF with a Markdown editor.
 
-**Student:** Shaurya Sharma — Roll No. 2401010439
+**Student:** Lakshay Saharan — Roll No. 2401020034
 Review the design and rerun the commands so you can explain the evidence.

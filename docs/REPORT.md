@@ -5,10 +5,11 @@
 
 | Field | Detail |
 |---|---|
-| **Student Name** | Shaurya Sharma |
-| **Roll Number** | 2401010439 |
+| **Student Name** | Lakshay Saharan |
+| **Roll Number** | 2401020034 |
 | **Course** | Modern Computer Architecture — B.Tech (CS & AI) |
 | **Submission Date** | November 2026 |
+
 
 ---
 
@@ -384,17 +385,17 @@ student working independently.
 
 | Task | Contributor |
 |---|---|
-| RTL design — `direct_mapped_cache.v` (arrays, decoder, comparator, FSM, memory interface) | Shaurya Sharma (2401010439) |
-| Testbench — `cache_tb.sv` (scoreboard, handshake checks, backpressure) | Shaurya Sharma (2401010439) |
-| Testbench — `reset_tb.sv` (cold reset, warm invalidation, refill/response abort) | Shaurya Sharma (2401010439) |
-| Main-memory model — `main_memory.v` (5-cycle latency, acceptance stalls) | Shaurya Sharma (2401010439) |
-| Access trace generation — `scripts/generate_traces.py` (8 deterministic workloads) | Shaurya Sharma (2401010439) |
-| Python oracle and AMAT analysis — `scripts/analyze.py` | Shaurya Sharma (2401010439) |
-| Experiment runner — `scripts/run.py` | Shaurya Sharma (2401010439) |
-| Yosys synthesis script — `scripts/synthesize.ys` | Shaurya Sharma (2401010439) |
-| Architecture documentation — `docs/ARCHITECTURE.md` (block diagram, FSM diagram, address layout) | Shaurya Sharma (2401010439) |
-| Project report — `docs/REPORT.md` | Shaurya Sharma (2401010439) |
-| Presentation — `output/presentation/Direct_Mapped_Cache_Slides.pptx` | Shaurya Sharma (2401010439) |
+| RTL design — `direct_mapped_cache.v` (arrays, decoder, comparator, FSM, memory interface) | Lakshay Saharan (2401020034) |
+| Testbench — `cache_tb.sv` (scoreboard, handshake checks, backpressure) | Lakshay Saharan (2401020034) |
+| Testbench — `reset_tb.sv` (cold reset, warm invalidation, refill/response abort) | Lakshay Saharan (2401020034) |
+| Main-memory model — `main_memory.v` (5-cycle latency, acceptance stalls) | Lakshay Saharan (2401020034) |
+| Access trace generation — `scripts/generate_traces.py` (8 deterministic workloads) | Lakshay Saharan (2401020034) |
+| Python oracle and AMAT analysis — `scripts/analyze.py` | Lakshay Saharan (2401020034) |
+| Experiment runner — `scripts/run.py` | Lakshay Saharan (2401020034) |
+| Yosys synthesis script — `scripts/synthesize.ys` | Lakshay Saharan (2401020034) |
+| Architecture documentation — `docs/ARCHITECTURE.md` (block diagram, FSM diagram, address layout) | Lakshay Saharan (2401020034) |
+| Project report — `docs/REPORT.md` | Lakshay Saharan (2401020034) |
+| Presentation — `output/presentation/Direct_Mapped_Cache_Slides.pptx` | Lakshay Saharan (2401020034) |
 
 ---
 
