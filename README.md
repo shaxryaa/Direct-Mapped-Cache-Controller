@@ -149,6 +149,10 @@ not an IEEE Xplore acceptance or PDF eXpress certification. If faculty supplies
 a specific template, use that template as the final authority.
 
 The video builder uses macOS `say` and verifies a duration below 300 seconds.
-The PPTX builder uses the bundled artifact runtime. Template-generation
+The saved PPTX can be edited directly in PowerPoint or compatible software.
+The optional PPTX builder currently uses author-machine paths to the bundled
+artifact runtime and its validation helpers; it is not a portable slide rebuild
+command on a fresh checkout. This does not affect the RTL or FPGA flows.
+Template-generation
 helpers require a NEW output filename and refuse to overwrite the maintained
 report. The ZIP packager refuses an outdated PDF and excludes build caches.

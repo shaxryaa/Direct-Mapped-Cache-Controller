@@ -29,34 +29,20 @@ def main():
         if relative not in tree: new.append(relative)
         elif tree[relative]!=digest: changed.append(relative)
     deleted=[p for p in tree if not (R/p).exists() and p.startswith(('docs/','rtl/','tb/','scripts/'))]
-    lines=['# Latest repository review and pending uploads','',
-        f'Reviewed `origin/main` at `{remote}`. No new commits or pushes were made.','',
-        '## What Lakshay committed','',
-        '`6ac3947` updates only `docs/REPORT.md`: both authors, IEEE sections, modular architecture, baseline results, FPGA resources/Fmax, contributions and references.',
-        'It does not upload the corresponding RTL modules, baseline/FPGA scripts and evidence, diagrams, regenerated PDF or demo video.','',
-        '## Completed locally in this review','',
-        '- Used Lakshay\'s report as the source, retaining his wording and tables.',
-        '- Added architecture, FSM and actual-waveform figures and exported the matching IEEE-style PDF.',
-        '- Re-ran RTL/cache/baseline verification and the reference FPGA/netlist flow.',
-        '- Checked the existing 4:18 demonstration, captions, members and artifact consistency.',
-        '- Refreshed the submission archive and this upload inventory.',
-        '- Preserved the deletion of CONTRIBUTIONS.md, team.json and DEMO_AND_VIVA.md.','',
-        '## Upload priorities','',
-        '1. Updated modular `rtl/`, `tb/`, and reproduction scripts with current `results/` evidence.',
-        '2. Report source, matching PDF, `docs/assets/` diagrams and current PPTX.',
-        '3. MP4, captions and transcript under `output/video/` and `docs/VIDEO_SCRIPT.md`.',
-        '4. README, submission checklist, optional CI workflow and complete ZIP.',
-        '5. Preserve the intentional file deletions listed below.','',
-        'The original `.git` history, `build/` caches, and extracted `output/Cache_Controller_Project/` folder do not need uploading. The ZIP is the refreshed complete package.','',
-        '## New files not present in origin/main','']
-    lines += [f'- `{p}`' for p in new]
-    lines += ['', '## Existing files with prepared changes','']+[f'- `{p}`' for p in changed]
-    lines += ['', '## Intentional deletions to preserve','']+[f'- `{p}`' for p in deleted]
+    lines=['# Repository comparison and remaining actions','',
+        f'Compared local submission files with `origin/main` at `{remote}`.',
+        'This is a snapshot of the last fetched remote branch, not a live GitHub status check.',
+        'The inventory excludes this generated document itself. No commit or push is performed by this script.','',
+        f'New files: {len(new)}. Changed files: {len(changed)}. Deleted files: {len(deleted)}.','',
+        '## New files','']
+    lines += [f'- `{p}`' for p in new] or ['None.']
+    lines += ['', '## Changed files',''] + ([f'- `{p}`' for p in changed] or ['None.'])
+    lines += ['', '## Deleted files',''] + ([f'- `{p}`' for p in deleted] or ['None.'])
     lines += ['', '## External actions still needed','',
-        '- A group member must review and commit/upload these prepared files; no assistant commit or push will be made.',
         '- Obtain faculty confirmation of the actual two-member group against the five-member wording.',
         '- Submit the repository/video links in the course form (its URL has not been provided).',
-        '- Deliver the live presentation; no physical FPGA board was supplied.','']
+        '- Deliver the live presentation; no physical FPGA board was supplied.',
+        '- Use a verified GitHub email for future commits if profile attribution is required.','']
     (R/'docs/PENDING_UPLOADS.md').write_text('\n'.join(lines))
     print(f'Remote {remote[:7]}: {len(new)} new files and {len(changed)} changed files prepared locally; {len(deleted)} intentional tracked deletions.')
 
