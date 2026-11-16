@@ -1,0 +1,6 @@
+read_verilog rtl/direct_mapped_cache.v
+hierarchy -check -top direct_mapped_cache
+synth -top direct_mapped_cache
+check -assert
+tee -o results/synthesis_stats.json stat -json
+write_verilog -noattr build/cache_synth.v

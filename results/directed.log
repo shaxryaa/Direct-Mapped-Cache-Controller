@@ -1,0 +1,3 @@
+VCD info: dumpfile results/directed.vcd opened for output.
+PASS requests=18 hits=9 misses=9 memory_reads=28 memory_writes=3
+tb/cache_tb.sv:97: $finish called at 3210000 (1ps)

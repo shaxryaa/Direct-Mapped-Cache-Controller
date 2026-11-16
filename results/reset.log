@@ -1,0 +1,2 @@
+PASS reset: cold start, warm invalidation, refill abort, response abort
+tb/reset_tb.sv:65: $finish called at 1690000 (1ps)
