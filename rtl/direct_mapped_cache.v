@@ -29,19 +29,38 @@ module direct_mapped_cache #(
     localparam IDLE=0, LOOKUP=1, REFILL_REQ=2, REFILL_WAIT=3,
                WRITE_REQ=4, WRITE_WAIT=5, RESPONSE=6;
     reg [2:0] state;
-    reg [31:0] data_ram [0:LINES*WORDS-1];
-    reg [TAG_BITS-1:0] tag_ram [0:LINES-1];
-    reg valid_ram [0:LINES-1];
     reg [ADDRESS_BITS-1:0] addr_q;
     reg [31:0] wdata_q, rdata_q;
     reg write_q, hit_q;
     reg [WORD_BITS-1:0] refill_word;
-    wire [INDEX_BITS-1:0] line_index = addr_q[OFFSET_BITS +: INDEX_BITS];
-    wire [WORD_BITS-1:0] word_offset = addr_q[2 +: WORD_BITS];
-    wire [TAG_BITS-1:0] address_tag = addr_q[ADDRESS_BITS-1 -: TAG_BITS];
-    wire lookup_hit = valid_ram[line_index] && tag_ram[line_index] == address_tag;
-    wire [ADDRESS_BITS-1:0] block_base = (addr_q >> OFFSET_BITS) << OFFSET_BITS;
-    integer i;
+    wire [INDEX_BITS-1:0] line_index;
+    wire [WORD_BITS-1:0] word_offset;
+    wire [TAG_BITS-1:0] address_tag, stored_tag;
+    wire [ADDRESS_BITS-1:0] block_base;
+    wire line_valid, lookup_hit;
+    wire [31:0] ram_read_data;
+    wire read_miss = state == LOOKUP && !write_q && !lookup_hit;
+    wire install_line = state == REFILL_WAIT && mem_rsp_valid && refill_word == WORDS-1;
+    wire write_hit = state == LOOKUP && write_q && lookup_hit;
+    wire refill_write = state == REFILL_WAIT && mem_rsp_valid;
+    wire [INDEX_BITS+WORD_BITS-1:0] ram_read_addr = state == IDLE
+        ? cpu_req_addr[2 +: INDEX_BITS+WORD_BITS]
+        : addr_q[2 +: INDEX_BITS+WORD_BITS];
+    wire [INDEX_BITS+WORD_BITS-1:0] ram_write_addr =
+        {line_index, refill_write ? refill_word : word_offset};
+    cache_address_decoder #(.ADDRESS_BITS(ADDRESS_BITS), .OFFSET_BITS(OFFSET_BITS),
+        .INDEX_BITS(INDEX_BITS), .WORD_BITS(WORD_BITS), .TAG_BITS(TAG_BITS)) decoder(
+        .address(addr_q), .index(line_index), .word_offset(word_offset),
+        .tag(address_tag), .block_base(block_base));
+    cache_metadata #(.LINES(LINES), .INDEX_BITS(INDEX_BITS), .TAG_BITS(TAG_BITS)) metadata(
+        .clk(clk), .reset(reset), .index(line_index), .stored_tag(stored_tag),
+        .line_valid(line_valid), .invalidate(read_miss), .install(install_line), .new_tag(address_tag));
+    cache_tag_comparator #(.TAG_BITS(TAG_BITS)) comparator(
+        .valid(line_valid), .stored_tag(stored_tag), .request_tag(address_tag), .hit(lookup_hit));
+    cache_data_ram #(.WORD_COUNT(LINES*WORDS), .ADDR_BITS(INDEX_BITS+WORD_BITS)) data_store(
+        .clk(clk), .read_addr(ram_read_addr), .read_data(ram_read_data),
+        .write_enable(!reset && (write_hit || refill_write)), .write_addr(ram_write_addr),
+        .write_data(refill_write ? mem_rsp_rdata : wdata_q));
     assign cpu_req_ready = !reset && state == IDLE;
     assign cpu_rsp_valid = !reset && state == RESPONSE;
     assign cpu_rsp_rdata = rdata_q;
@@ -56,8 +75,7 @@ module direct_mapped_cache #(
             addr_q <= 0; wdata_q <= 0; rdata_q <= 0;
             write_q <= 0; hit_q <= 0; refill_word <= 0;
             hit_event <= 0; miss_event <= 0;
-            // Tags/data need no reset: valid bits hide uninitialized storage.
-            for (i=0; i<LINES; i=i+1) valid_ram[i] <= 0;
+            // Metadata owns reset invalidation; data RAM needs no reset.
         end else begin
             hit_event <= 0; miss_event <= 0;
             case (state)
@@ -69,24 +87,19 @@ module direct_mapped_cache #(
                     hit_q <= lookup_hit;
                     hit_event <= lookup_hit; miss_event <= !lookup_hit;
                     if (write_q) begin
-                        if (lookup_hit) data_ram[line_index*WORDS+word_offset] <= wdata_q;
                         rdata_q <= 0;
                         state <= WRITE_REQ;
                     end else if (lookup_hit) begin
-                        rdata_q <= data_ram[line_index*WORDS+word_offset];
+                        rdata_q <= ram_read_data;
                         state <= RESPONSE;
                     end else begin
-                        valid_ram[line_index] <= 0;
                         refill_word <= 0; state <= REFILL_REQ;
                     end
                 end
                 REFILL_REQ: if (mem_req_valid && mem_req_ready) state <= REFILL_WAIT;
                 REFILL_WAIT: if (mem_rsp_valid) begin
-                    data_ram[line_index*WORDS+refill_word] <= mem_rsp_rdata;
                     if (refill_word == word_offset) rdata_q <= mem_rsp_rdata;
                     if (refill_word == WORDS-1) begin
-                        tag_ram[line_index] <= address_tag;
-                        valid_ram[line_index] <= 1;
                         state <= RESPONSE;
                     end else begin
                         refill_word <= refill_word + 1'b1; state <= REFILL_REQ;

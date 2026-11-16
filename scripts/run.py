@@ -30,8 +30,9 @@ def main():
     for folder in ('build','results','traces'):
         (ROOT/folder).mkdir(exist_ok=True)
     run([sys.executable,'scripts/generate_traces.py'])
+    rtl_files=sorted(str(p.relative_to(ROOT)) for p in (ROOT/'rtl').glob('*.v'))
     run(['iverilog','-g2012','-Wall','-s','reset_tb','-o','build/reset_tb',
-         'rtl/direct_mapped_cache.v','tb/main_memory.v','tb/reset_tb.sv'])
+         *rtl_files,'tb/main_memory.v','tb/reset_tb.sv'])
     reset_output=run(['vvp','build/reset_tb'],'results/reset.log')
     if 'PASS reset:' not in reset_output:
         raise SystemExit('Reset simulation did not finish successfully')
@@ -39,7 +40,7 @@ def main():
         binary=f'build/cache_tb{suffix}'
         run(['iverilog','-g2012','-Wall','-s','cache_tb',
              f'-Pcache_tb.CACHE_BYTES={cache}',f'-Pcache_tb.BLOCK_BYTES={block}',
-             '-o',binary,'rtl/direct_mapped_cache.v','tb/main_memory.v','tb/cache_tb.sv'])
+             '-o',binary,*rtl_files,'tb/main_memory.v','tb/cache_tb.sv'])
         for trace in sorted((ROOT/'traces').glob('*.trace')):
             cmd=['vvp',binary,f'+TRACE=traces/{trace.name}',f'+RESULT=results/{trace.stem}{suffix}.csv']
             if trace.stem=='directed' and not suffix:
@@ -54,6 +55,12 @@ def main():
             log=(ROOT/'results'/f"{row['workload']}{suffix}.log").read_text()
             counts=re.search(r'memory_reads=(\d+) memory_writes=(\d+)',log)
             assert counts and tuple(map(int,counts.groups())) == (row['memory_read_words'],row['memory_write_words'])
+    run(['iverilog','-g2012','-Wall','-DBASELINE','-s','cache_tb','-o','build/baseline_tb',
+         *rtl_files,'tb/main_memory.v','tb/cache_tb.sv'])
+    for trace in sorted((ROOT/'traces').glob('*.trace')):
+        run(['vvp','build/baseline_tb',f'+TRACE=traces/{trace.name}',
+             f'+RESULT=results/{trace.stem}_baseline.csv'],f'results/{trace.stem}_baseline.log')
+    run([sys.executable,'scripts/compare_baseline.py'])
     if not args.skip_synthesis:
         run(['yosys','-Q','-T','-s','scripts/synthesize.ys'],'results/synthesis.log')
     print('All requested checks passed. Results are in results/.')

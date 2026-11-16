@@ -1,6 +1,7 @@
-read_verilog rtl/direct_mapped_cache.v
+read_verilog rtl/*.v
 hierarchy -check -top direct_mapped_cache
-synth -top direct_mapped_cache
+synth -flatten -top direct_mapped_cache
+delete t:$scopeinfo
 check -assert
 tee -o results/synthesis_stats.json stat -json
 write_verilog -noattr build/cache_synth.v

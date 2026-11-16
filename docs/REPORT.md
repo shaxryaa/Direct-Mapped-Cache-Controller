@@ -93,6 +93,8 @@ a separate synchronous write port, permitting block-RAM inference. The incoming 
 selects the RAM word at request acceptance; LOOKUP uses that registered value on the next
 edge. Metadata clears valid bits on reset.
 
+![Fig. 1. System architecture and RTL module boundaries.](assets/architecture.png)
+
 ### B. State Transitions
 
 The controller uses seven states. IDLE accepts a request and LOOKUP classifies it. A read
@@ -109,6 +111,8 @@ requested word is saved for the CPU while refill continues.
 | WRITE_REQ (4) | Hold one word-write request | WRITE_WAIT on memory ready |
 | WRITE_WAIT (5) | Wait for write acknowledgement | RESPONSE |
 | RESPONSE (6) | Hold CPU data and hit status | IDLE on CPU ready |
+
+![Fig. 2. Controller state transitions.](assets/fsm.png)
 
 On a write hit, the controller updates the cached word and memory. On a write miss it
 updates only memory and preserves the existing cache line. WRITE_REQ holds the memory
@@ -161,6 +165,8 @@ sends one memory transaction per CPU request.
 
 ---
 
+![Fig. 3. Actual directed-trace VCD waveform: cold refill followed by hits.](assets/waveform.png)
+
 ## V. Results and Discussion
 
 ### A. Hit and Miss Behavior
@@ -190,7 +196,7 @@ memory latency. A four-word read miss therefore takes 2 + 4 × 7 = 30 cycles; a 
 2 + 7 = 9 cycles. With R reads, W writes, RM read misses and N = R + W, the ideal average is:
 
 ```text
-AMAT = (2R + 28RM + 9W) / N                                    (1)
+AMAT = (2R + 28RM + 9W) / N  (1)
 ```
 
 For sequential reads, AMAT = 2 + (256/1024) × 28 = 9 cycles. Repeated reads give 2.875

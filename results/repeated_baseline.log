@@ -1,0 +1,2 @@
+PASS requests=512 hits=0 misses=512 memory_reads=512 memory_writes=0
+tb/cache_tb.sv:106: $finish called at 51260000 (1ps)

@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
 """Regenerate the report source from verified experiment outputs."""
+import argparse
 import json
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser(description='Generate the original report template into a NEW file; never overwrites edited reports.')
+parser.add_argument('--output', type=Path, required=True, help='New output path, for example build/report-template.md')
+args=parser.parse_args()
+destination=args.output.resolve()
+if destination == (R/'docs/REPORT.md').resolve():
+    parser.error('docs/REPORT.md is the maintained source. Choose another output path.')
+if destination.exists():
+    parser.error('Output already exists. Choose a new filename to preserve existing work.')
 stats=json.loads((R/'results/synthesis_stats.json').read_text())['design']
 summary=(R/'results/summary.md').read_text().splitlines()
 table='\n'.join(line for line in summary if line.startswith('|'))
@@ -330,5 +339,7 @@ https://yosyshq.readthedocs.io/projects/yosys/en/stable/using_yosys/synthesis/in
 The supplied course brief defines the objective and expected deliverables.
 All project performance and synthesis numbers come from the included runs.
 '''
-(R/'docs/REPORT.md').write_text(report)
-print('Wrote docs/REPORT.md from verified results.')
+destination.parent.mkdir(parents=True, exist_ok=True)
+with destination.open('x') as stream:
+    stream.write(report)
+print(f'Wrote original template to {destination}; maintained report unchanged.')

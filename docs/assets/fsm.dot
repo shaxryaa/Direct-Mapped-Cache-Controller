@@ -1,0 +1,17 @@
+digraph fsm {
+ graph [rankdir=TB,bgcolor="white",nodesep=.18,ranksep=.28];
+ node [shape=box,fontname="Times-Roman",fontsize=11,margin=.08];
+ edge [fontname="Times-Roman",fontsize=9];
+ IDLE -> LOOKUP [label="CPU accept"];
+ LOOKUP -> RESPONSE [label="read hit"];
+ LOOKUP -> REFILL_REQ [label="read miss"];
+ LOOKUP -> WRITE_REQ [label="write"];
+ REFILL_REQ -> REFILL_WAIT [label="memory accept"];
+ REFILL_WAIT -> REFILL_REQ [label="more words"];
+ REFILL_WAIT -> RESPONSE [label="last word: install"];
+ WRITE_REQ -> WRITE_WAIT [label="memory accept"];
+ WRITE_WAIT -> RESPONSE [label="acknowledge"];
+ RESPONSE -> IDLE [label="CPU accept",constraint=false];
+ {rank=same;REFILL_REQ;WRITE_REQ;}
+ {rank=same;REFILL_WAIT;WRITE_WAIT;}
+}

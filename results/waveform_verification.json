@@ -1,0 +1,6 @@
+{
+  "source": "results/directed.vcd",
+  "checked_response_handshakes": 18,
+  "result": "PASS",
+  "method": "Sample stable valid/ready/hit/data before each clock rising edge; compare every response to directed.csv"
+}

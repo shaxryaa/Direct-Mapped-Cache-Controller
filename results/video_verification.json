@@ -1,0 +1,9 @@
+{
+  "duration_seconds": 257.811746,
+  "maximum_allowed_seconds": 300,
+  "under_limit": true,
+  "scene_count": 10,
+  "has_audio": true,
+  "narration": "macOS Samantha synthetic voice",
+  "source": "Actual source files, checked simulation logs/CSVs, VCD plot and FPGA results; recorded-evidence walkthrough, not a live desktop recording."
+}

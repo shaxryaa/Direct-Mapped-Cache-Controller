@@ -1,0 +1,58 @@
+[
+  {
+    "workload": "all_offsets",
+    "requests": 256,
+    "cache_response_cycles": 11.48828125,
+    "baseline_response_cycles": 9.0078125,
+    "response_speedup": 0.7840870452227133
+  },
+  {
+    "workload": "conflict",
+    "requests": 256,
+    "cache_response_cycles": 33.98828125,
+    "baseline_response_cycles": 9.0078125,
+    "response_speedup": 0.2650270083898402
+  },
+  {
+    "workload": "directed",
+    "requests": 18,
+    "cache_response_cycles": 16.61111111111111,
+    "baseline_response_cycles": 9.11111111111111,
+    "response_speedup": 0.5484949832775919
+  },
+  {
+    "workload": "mixed",
+    "requests": 1024,
+    "cache_response_cycles": 23.4306640625,
+    "baseline_response_cycles": 9.001953125,
+    "response_speedup": 0.3841953903221773
+  },
+  {
+    "workload": "random",
+    "requests": 1024,
+    "cache_response_cycles": 33.5869140625,
+    "baseline_response_cycles": 9.001953125,
+    "response_speedup": 0.2680196551623877
+  },
+  {
+    "workload": "repeated",
+    "requests": 512,
+    "cache_response_cycles": 4.931640625,
+    "baseline_response_cycles": 9.00390625,
+    "response_speedup": 1.8257425742574258
+  },
+  {
+    "workload": "sequential",
+    "requests": 1024,
+    "cache_response_cycles": 11.4970703125,
+    "baseline_response_cycles": 9.001953125,
+    "response_speedup": 0.7829780005096407
+  },
+  {
+    "workload": "write_stream",
+    "requests": 512,
+    "cache_response_cycles": 10.25390625,
+    "baseline_response_cycles": 9.00390625,
+    "response_speedup": 0.878095238095238
+  }
+]

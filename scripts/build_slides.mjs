@@ -35,10 +35,10 @@ function table(s,rows,widths,y=190,height=370){
  }
  return t;
 }
-let s=slide('Direct-Mapped Cache Controller', 'Modern Computer Architecture, Project 6. Add your student and institutional details before submission. The project sources and measurements accompany this deck.');
+let s=slide('Direct-Mapped Cache Controller', 'Modern Computer Architecture, Project 6. Actual group: Shaurya Sharma and Lakshay Saharan. Sources and measurements accompany this deck.');
 text(s,'RTL implementation and access-trace analysis',80,220,1050,90,38,false,teal);
 text(s,'1 KB cache   /   16-byte blocks   /   32-bit addresses',80,350,1100,60,30);
-text(s,'Modern Computer Architecture\nB.Tech (CS & AI)',80,485,1000,100,27,false,gray);
+text(s,'Shaurya Sharma (2401010439)\nLakshay Saharan (2401020034)',80,485,1000,100,27,false,gray);
 s=slide('Cache organization','Data capacity excludes tags and valid bits. The cache has one possible line per block. Reference: https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/caches.html');
 table(s,[['Property','Configuration'],['Data capacity','1024 bytes'],['Lines and block size','64 lines, 16 bytes each'],['Access width','32-bit aligned words'],['Write policy','Write-through, no-write-allocate'],['Outstanding CPU requests','One']],[430,690],170,430);
 s=slide('Tag, index and offset','Address arithmetic is independently checked in the scoreboards. 0x00000400 is 1024 bytes. Cornell cache notes explain direct mapping.');
@@ -53,7 +53,7 @@ table(s,[['Request','Cache action','Memory action'],['Write hit','Update selecte
 text(s,'Every write waits for acknowledgement before responding.',80,470,1100,90,31,false,gray);
 text(s,'Dirty bits and write-back eviction are unnecessary.',80,565,1100,60,29,false,teal);
 s=slide('Verification evidence','Sources: results/run.log, results/reset.log, transaction CSVs and scripts/analyze.py. Both scoreboards independently derive tags/data. Tests are scenario-based evidence, not formal exhaustive proof.');
-lines(s,['9,252 checked transactions across two cache geometries','Eight workloads, including conflicts and mixed reads/writes','Independent Verilog and Python reference models','Memory stalls and CPU response backpressure','Reset during refill and during a held response'],165);
+lines(s,['18,504 checked transactions: RTL, baseline and FPGA netlist','Eight workloads, including conflicts and mixed reads/writes','Independent Verilog and Python reference models','Memory stalls and CPU response backpressure','Reset during refill and during a held response'],165);
 s=slide('Locality determines the hit rate','Exact rates from results/summary.json for the default 1024-byte cache and 16-byte block. Repeated: 496/512. Sequential: 768/1024. Random: 14/1024. Conflict: 0/256. All four plotted traces contain only reads.');
 const results=JSON.parse(await fs.readFile(path.join(ROOT,'results/summary.json'),'utf8'));
 const names=['repeated','sequential','random','conflict'];
@@ -72,26 +72,26 @@ table(s,[['Workload','Ideal AMAT','Measured response'],...['repeated','sequentia
  const r=results.find(r=>r.workload===n); return [n,`${r.ideal_amat_cycles.toFixed(3)} cycles`,`${r.measured_response_cycles.toFixed(3)} cycles`];
 })],[360,360,400],285,260);
 text(s,'Measured time includes interface stalls. It excludes driver idle gaps.',80,590,1120,60,25,false,gray);
-s=slide('Generic synthesis results','Source: results/synthesis_stats.json and results/synthesis.log. Yosys 0.71+post. Generic synthesis lowers memory arrays to flip-flops and logic. These are generic cell counts, not FPGA LUT counts or timing results. https://yosyshq.readthedocs.io/projects/yosys/en/stable/using_yosys/synthesis/index.html');
-text(s,'24,146',80,180,600,120,90,true,teal);
-text(s,'generic mapped cells',80,305,950,60,34);
-lines(s,['8192 data bits + 1408 tag bits + 64 valid bits','The generic flow maps arrays to flip-flops and multiplexers','FPGA resources and clock limits require a target device'],420);
+s=slide('Reference FPGA implementation','Source: results/fpga_summary.json. iCE40 HX8K, CT256, seed 1, 25 MHz target. Internal post-route timing estimate with automatic IO placement and no external delay constraints. No board programming was performed.');
+text(s,'75.35 MHz',80,180,900,120,82,true,teal);
+text(s,'estimated post-route internal Fmax',80,305,1050,60,32);
+lines(s,['610 / 7680 logic cells and 4 / 32 RAM blocks','25 MHz target met; all 206 package IOs used','Reference build with automatic IO placement, no board test'],420);
 s=slide('Demonstration and extensions','Run python3 scripts/run.py. Open results/directed.vcd in a waveform viewer. Follow docs/DEMO_AND_VIVA.md. Proposed extensions are future work, not implemented features.');
-lines(s,['Run: python3 scripts/run.py','Inspect cold miss, offset hit and conflict in directed.vcd','Explain write-through and no-write-allocate using the trace','Extensions: write buffer, burst refill or set associativity'],180);
+lines(s,['Run: python3 scripts/run.py','Repeated reads: 1.826x faster than the no-cache baseline','Explain write-through and no-write-allocate using the trace','Extensions: write buffer, burst refill or set associativity'],180);
 text(s,'Current scope: one request at a time, aligned words, shared reset.',80,580,1120,60,25,false,teal);
 await fs.mkdir(path.join(ROOT,'build/slides'),{recursive:true});
 for(const [i,sl] of p.slides.items.entries()){
  const blob=await p.export({slide:sl,format:'png',scale:1});
  await fs.writeFile(path.join(ROOT,`build/slides/slide-${i+1}.png`),new Uint8Array(await blob.arrayBuffer()));
 }
-const candidatePath=path.join(ROOT,'build/slides/candidate-v2.pptx');
+const candidatePath=path.join(ROOT,'build/slides/candidate-rubric.pptx');
 await (await PresentationFile.exportPptx(p)).save(candidatePath);
-const finalPath=path.join(ROOT,'output/presentation/Direct_Mapped_Cache_Slides.pptx');
+const finalPath=path.join(ROOT,'output/presentation/Cache_Controller_Rubric_Slides.pptx');
 const done=await finalizePresentation({workspaceDir:ROOT,candidatePath,finalPath,pythonExecutable:PY,
  integrityValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_package_integrity.py'),
  layoutValidatorPath:path.join(SKILL,'container_tools/inspect_presentation_layout_geometry.py'),
  layoutArgs:['--expected-slide-size-emu','12192000,6858000','--validate-heading-fit',...[2,4,5,8].flatMap(n=>['--require-native-table-slide',String(n)])],
  requiredNativeTableOwnerSlides:[2,4,5,8],requiredNativeChartOwnerSlides:[7],
  materializeLiteralChartWorkbooks:true,fontPolicy:{basis:'design',families:[font]},
- verifyArtifactToolImport:true,receiptPath:path.join(ROOT,'build/slides/validation-v2.json')});
+ verifyArtifactToolImport:true,receiptPath:path.join(ROOT,'build/slides/validation-rubric.json')});
 console.log(JSON.stringify(done));

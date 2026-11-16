@@ -1,8 +1,12 @@
 # Architecture and controller state machine
 
-The suggested modules are represented as sections inside one RTL module.
-This keeps storage writes and controller sequencing together while preserving
-clear architectural responsibilities.
+The top-level controller instantiates separate decoder, tag-comparator, metadata
+and synchronous data-RAM modules. The hierarchy is synthesizable, and the data
+RAM read begins at CPU request acceptance to preserve the two-cycle hit path.
+
+![System architecture](assets/architecture.png)
+
+![Controller state transitions](assets/fsm.png)
 
 ```mermaid
 flowchart LR
@@ -52,10 +56,12 @@ word=(A/4) mod 4, block base=A & 0xfffffff0.
 
 | Suggested block | RTL representation |
 |---|---|
-| Cache Data RAM | `data_ram`, 256 x 32 bits |
-| Tag RAM | `tag_ram`, 64 x 22 bits |
-| Valid-Bit RAM | `valid_ram`, 64 x 1 bit |
+| Cache Data RAM | `data_store.words`, 256 x 32 bits |
+| Tag RAM | `metadata.tags`, 64 x 22 bits |
+| Valid-Bit RAM | `metadata.valids`, 64 x 1 bit |
 | Address Decoder | `line_index`, `word_offset`, `address_tag`, `block_base` |
 | Tag Comparator | `lookup_hit` |
 | Cache Controller FSM | `state` and sequential `case` |
 | Main-Memory Interface | `mem_req_*`, `mem_rsp_*` |
+
+The no-cache baseline is a separate module using the same CPU handshake, lookup stage and memory model. Reference FPGA mapping infers four RAM blocks; see results/fpga_summary.json.

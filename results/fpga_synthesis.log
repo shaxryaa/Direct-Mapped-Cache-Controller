@@ -1,0 +1,2298 @@
+
+-- Running command `read_verilog rtl/*.v; synth_ice40 -top direct_mapped_cache -json build/cache_ice40.json; write_verilog -noattr build/cache_ice40_netlist.v; stat' --
+
+1. Executing Verilog-2005 frontend: rtl/cache_address_decoder.v
+Parsing Verilog input from `rtl/cache_address_decoder.v' to AST representation.
+Generating RTLIL representation for module `\cache_address_decoder'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: rtl/cache_data_ram.v
+Parsing Verilog input from `rtl/cache_data_ram.v' to AST representation.
+Generating RTLIL representation for module `\cache_data_ram'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: rtl/cache_metadata.v
+Parsing Verilog input from `rtl/cache_metadata.v' to AST representation.
+Generating RTLIL representation for module `\cache_metadata'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rtl/cache_tag_comparator.v
+Parsing Verilog input from `rtl/cache_tag_comparator.v' to AST representation.
+Generating RTLIL representation for module `\cache_tag_comparator'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: rtl/direct_mapped_cache.v
+Parsing Verilog input from `rtl/direct_mapped_cache.v' to AST representation.
+Generating RTLIL representation for module `\direct_mapped_cache'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: rtl/no_cache_controller.v
+Parsing Verilog input from `rtl/no_cache_controller.v' to AST representation.
+Generating RTLIL representation for module `\no_cache_controller'.
+Successfully finished Verilog frontend.
+
+7. Executing SYNTH_ICE40 pass.
+
+7.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/cells_sim.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\SB_IO'.
+Generating RTLIL representation for module `\SB_GB_IO'.
+Generating RTLIL representation for module `\SB_GB'.
+Generating RTLIL representation for module `\SB_LUT4'.
+Generating RTLIL representation for module `\SB_CARRY'.
+Generating RTLIL representation for module `\SB_DFF'.
+Generating RTLIL representation for module `\SB_DFFE'.
+Generating RTLIL representation for module `\SB_DFFSR'.
+Generating RTLIL representation for module `\SB_DFFR'.
+Generating RTLIL representation for module `\SB_DFFSS'.
+Generating RTLIL representation for module `\SB_DFFS'.
+Generating RTLIL representation for module `\SB_DFFESR'.
+Generating RTLIL representation for module `\SB_DFFER'.
+Generating RTLIL representation for module `\SB_DFFESS'.
+Generating RTLIL representation for module `\SB_DFFES'.
+Generating RTLIL representation for module `\SB_DFFN'.
+Generating RTLIL representation for module `\SB_DFFNE'.
+Generating RTLIL representation for module `\SB_DFFNSR'.
+Generating RTLIL representation for module `\SB_DFFNR'.
+Generating RTLIL representation for module `\SB_DFFNSS'.
+Generating RTLIL representation for module `\SB_DFFNS'.
+Generating RTLIL representation for module `\SB_DFFNESR'.
+Generating RTLIL representation for module `\SB_DFFNER'.
+Generating RTLIL representation for module `\SB_DFFNESS'.
+Generating RTLIL representation for module `\SB_DFFNES'.
+Generating RTLIL representation for module `\SB_RAM40_4K'.
+Generating RTLIL representation for module `\SB_RAM40_4KNR'.
+Generating RTLIL representation for module `\SB_RAM40_4KNW'.
+Generating RTLIL representation for module `\SB_RAM40_4KNRNW'.
+Generating RTLIL representation for module `\ICESTORM_LC'.
+Generating RTLIL representation for module `\SB_PLL40_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2_PAD'.
+Generating RTLIL representation for module `\SB_PLL40_2F_CORE'.
+Generating RTLIL representation for module `\SB_PLL40_2F_PAD'.
+Generating RTLIL representation for module `\SB_WARMBOOT'.
+Generating RTLIL representation for module `\SB_SPRAM256KA'.
+Generating RTLIL representation for module `\SB_HFOSC'.
+Generating RTLIL representation for module `\SB_LFOSC'.
+Generating RTLIL representation for module `\SB_RGBA_DRV'.
+Generating RTLIL representation for module `\SB_LED_DRV_CUR'.
+Generating RTLIL representation for module `\SB_RGB_DRV'.
+Generating RTLIL representation for module `\SB_I2C'.
+Generating RTLIL representation for module `\SB_SPI'.
+Generating RTLIL representation for module `\SB_LEDDA_IP'.
+Generating RTLIL representation for module `\SB_FILTER_50NS'.
+Generating RTLIL representation for module `\SB_IO_I3C'.
+Generating RTLIL representation for module `\SB_IO_OD'.
+Generating RTLIL representation for module `\SB_MAC16'.
+Generating RTLIL representation for module `\ICESTORM_RAM'.
+Successfully finished Verilog frontend.
+
+7.2. Executing HIERARCHY pass (managing design hierarchy).
+
+7.2.1. Analyzing design hierarchy..
+Top module:  \direct_mapped_cache
+Used module:     \cache_data_ram
+Used module:     \cache_tag_comparator
+Used module:     \cache_metadata
+Used module:     \cache_address_decoder
+Parameter \WORD_COUNT = 256
+Parameter \ADDR_BITS = 8
+
+7.2.2. Executing AST frontend in derive mode using pre-parsed AST for module `\cache_data_ram'.
+Parameter \WORD_COUNT = 256
+Parameter \ADDR_BITS = 8
+Generating RTLIL representation for module `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram'.
+Parameter \TAG_BITS = 22
+
+7.2.3. Executing AST frontend in derive mode using pre-parsed AST for module `\cache_tag_comparator'.
+Parameter \TAG_BITS = 22
+Generating RTLIL representation for module `$paramod\cache_tag_comparator\TAG_BITS=s32'00000000000000000000000000010110'.
+Parameter \LINES = 64
+Parameter \INDEX_BITS = 6
+Parameter \TAG_BITS = 22
+
+7.2.4. Executing AST frontend in derive mode using pre-parsed AST for module `\cache_metadata'.
+Parameter \LINES = 64
+Parameter \INDEX_BITS = 6
+Parameter \TAG_BITS = 22
+Generating RTLIL representation for module `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata'.
+Parameter \ADDRESS_BITS = 32
+Parameter \OFFSET_BITS = 4
+Parameter \INDEX_BITS = 6
+Parameter \WORD_BITS = 2
+Parameter \TAG_BITS = 22
+
+7.2.5. Executing AST frontend in derive mode using pre-parsed AST for module `\cache_address_decoder'.
+Parameter \ADDRESS_BITS = 32
+Parameter \OFFSET_BITS = 4
+Parameter \INDEX_BITS = 6
+Parameter \WORD_BITS = 2
+Parameter \TAG_BITS = 22
+Generating RTLIL representation for module `$paramod$e254feddc3b1496d8008eb8a68b678c9f28429fc\cache_address_decoder'.
+
+7.2.6. Analyzing design hierarchy..
+Top module:  \direct_mapped_cache
+Used module:     $paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram
+Used module:     $paramod\cache_tag_comparator\TAG_BITS=s32'00000000000000000000000000010110
+Used module:     $paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata
+Used module:     $paramod$e254feddc3b1496d8008eb8a68b678c9f28429fc\cache_address_decoder
+
+7.2.7. Analyzing design hierarchy..
+Top module:  \direct_mapped_cache
+Used module:     $paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram
+Used module:     $paramod\cache_tag_comparator\TAG_BITS=s32'00000000000000000000000000010110
+Used module:     $paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata
+Used module:     $paramod$e254feddc3b1496d8008eb8a68b678c9f28429fc\cache_address_decoder
+Removing unused module `\no_cache_controller'.
+Removing unused module `\cache_tag_comparator'.
+Removing unused module `\cache_metadata'.
+Removing unused module `\cache_data_ram'.
+Removing unused module `\cache_address_decoder'.
+Removed 5 unused modules.
+
+7.3. Executing PROC pass (convert processes to netlists).
+
+7.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 5 switch rules as full_case in process $rtl/direct_mapped_cache.v:72$proc$271 in module direct_mapped_cache.
+Marked 3 switch rules as full_case in process $rtl/cache_metadata.v:16$proc$750 in module $paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.
+Marked 1 switch rules as full_case in process $rtl/cache_data_ram.v:13$proc$671 in module $paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.
+Removed a total of 0 dead cases.
+
+7.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 76 assignments to connections.
+
+7.3.4. Executing PROC_INIT pass (extract init attributes).
+
+7.3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+7.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~16 debug messages>
+
+7.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+     1/9: $0\miss_event[0:0]
+     2/9: $0\hit_event[0:0]
+     3/9: $0\refill_word[1:0]
+     4/9: $0\hit_q[0:0]
+     5/9: $0\write_q[0:0]
+     6/9: $0\rdata_q[31:0]
+     7/9: $0\wdata_q[31:0]
+     8/9: $0\addr_q[31:0]
+     9/9: $0\state[2:0]
+Creating decoders for process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+     1/79: $2$memwr$\valids$rtl/cache_metadata.v:21$747_EN[0:0]$899
+     2/79: $2$memwr$\valids$rtl/cache_metadata.v:21$747_ADDR[5:0]$898
+     3/79: $2$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$897
+     4/79: $2$memwr$\tags$rtl/cache_metadata.v:21$746_DATA[21:0]$896
+     5/79: $2$memwr$\tags$rtl/cache_metadata.v:21$746_ADDR[5:0]$895
+     6/79: $2$memwr$\valids$rtl/cache_metadata.v:20$745_EN[0:0]$894
+     7/79: $2$memwr$\valids$rtl/cache_metadata.v:20$745_ADDR[5:0]$893
+     8/79: $1\i[31:0]
+     9/79: $1$memwr$\valids$rtl/cache_metadata.v:18$744_EN[0:0]$885
+    10/79: $1$memwr$\valids$rtl/cache_metadata.v:18$743_EN[0:0]$884
+    11/79: $1$memwr$\valids$rtl/cache_metadata.v:18$742_EN[0:0]$883
+    12/79: $1$memwr$\valids$rtl/cache_metadata.v:18$741_EN[0:0]$882
+    13/79: $1$memwr$\valids$rtl/cache_metadata.v:18$740_EN[0:0]$881
+    14/79: $1$memwr$\valids$rtl/cache_metadata.v:18$739_EN[0:0]$880
+    15/79: $1$memwr$\valids$rtl/cache_metadata.v:18$738_EN[0:0]$879
+    16/79: $1$memwr$\valids$rtl/cache_metadata.v:18$737_EN[0:0]$878
+    17/79: $1$memwr$\valids$rtl/cache_metadata.v:18$736_EN[0:0]$877
+    18/79: $1$memwr$\valids$rtl/cache_metadata.v:18$735_EN[0:0]$876
+    19/79: $1$memwr$\valids$rtl/cache_metadata.v:18$734_EN[0:0]$875
+    20/79: $1$memwr$\valids$rtl/cache_metadata.v:18$733_EN[0:0]$874
+    21/79: $1$memwr$\valids$rtl/cache_metadata.v:18$732_EN[0:0]$873
+    22/79: $1$memwr$\valids$rtl/cache_metadata.v:18$731_EN[0:0]$872
+    23/79: $1$memwr$\valids$rtl/cache_metadata.v:18$730_EN[0:0]$871
+    24/79: $1$memwr$\valids$rtl/cache_metadata.v:18$729_EN[0:0]$870
+    25/79: $1$memwr$\valids$rtl/cache_metadata.v:18$728_EN[0:0]$869
+    26/79: $1$memwr$\valids$rtl/cache_metadata.v:18$727_EN[0:0]$868
+    27/79: $1$memwr$\valids$rtl/cache_metadata.v:18$726_EN[0:0]$867
+    28/79: $1$memwr$\valids$rtl/cache_metadata.v:18$725_EN[0:0]$866
+    29/79: $1$memwr$\valids$rtl/cache_metadata.v:18$724_EN[0:0]$865
+    30/79: $1$memwr$\valids$rtl/cache_metadata.v:18$723_EN[0:0]$864
+    31/79: $1$memwr$\valids$rtl/cache_metadata.v:18$722_EN[0:0]$863
+    32/79: $1$memwr$\valids$rtl/cache_metadata.v:18$721_EN[0:0]$862
+    33/79: $1$memwr$\valids$rtl/cache_metadata.v:18$720_EN[0:0]$861
+    34/79: $1$memwr$\valids$rtl/cache_metadata.v:18$719_EN[0:0]$860
+    35/79: $1$memwr$\valids$rtl/cache_metadata.v:18$718_EN[0:0]$859
+    36/79: $1$memwr$\valids$rtl/cache_metadata.v:18$717_EN[0:0]$858
+    37/79: $1$memwr$\valids$rtl/cache_metadata.v:18$716_EN[0:0]$857
+    38/79: $1$memwr$\valids$rtl/cache_metadata.v:18$715_EN[0:0]$856
+    39/79: $1$memwr$\valids$rtl/cache_metadata.v:18$714_EN[0:0]$855
+    40/79: $1$memwr$\valids$rtl/cache_metadata.v:18$713_EN[0:0]$854
+    41/79: $1$memwr$\valids$rtl/cache_metadata.v:18$712_EN[0:0]$853
+    42/79: $1$memwr$\valids$rtl/cache_metadata.v:18$711_EN[0:0]$852
+    43/79: $1$memwr$\valids$rtl/cache_metadata.v:18$710_EN[0:0]$851
+    44/79: $1$memwr$\valids$rtl/cache_metadata.v:18$709_EN[0:0]$850
+    45/79: $1$memwr$\valids$rtl/cache_metadata.v:18$708_EN[0:0]$849
+    46/79: $1$memwr$\valids$rtl/cache_metadata.v:18$707_EN[0:0]$848
+    47/79: $1$memwr$\valids$rtl/cache_metadata.v:18$706_EN[0:0]$847
+    48/79: $1$memwr$\valids$rtl/cache_metadata.v:18$705_EN[0:0]$846
+    49/79: $1$memwr$\valids$rtl/cache_metadata.v:18$704_EN[0:0]$845
+    50/79: $1$memwr$\valids$rtl/cache_metadata.v:18$703_EN[0:0]$844
+    51/79: $1$memwr$\valids$rtl/cache_metadata.v:18$702_EN[0:0]$843
+    52/79: $1$memwr$\valids$rtl/cache_metadata.v:18$701_EN[0:0]$842
+    53/79: $1$memwr$\valids$rtl/cache_metadata.v:18$700_EN[0:0]$841
+    54/79: $1$memwr$\valids$rtl/cache_metadata.v:18$699_EN[0:0]$840
+    55/79: $1$memwr$\valids$rtl/cache_metadata.v:18$698_EN[0:0]$839
+    56/79: $1$memwr$\valids$rtl/cache_metadata.v:18$697_EN[0:0]$838
+    57/79: $1$memwr$\valids$rtl/cache_metadata.v:18$696_EN[0:0]$837
+    58/79: $1$memwr$\valids$rtl/cache_metadata.v:18$695_EN[0:0]$836
+    59/79: $1$memwr$\valids$rtl/cache_metadata.v:18$694_EN[0:0]$835
+    60/79: $1$memwr$\valids$rtl/cache_metadata.v:18$693_EN[0:0]$834
+    61/79: $1$memwr$\valids$rtl/cache_metadata.v:18$692_EN[0:0]$833
+    62/79: $1$memwr$\valids$rtl/cache_metadata.v:18$691_EN[0:0]$832
+    63/79: $1$memwr$\valids$rtl/cache_metadata.v:18$690_EN[0:0]$831
+    64/79: $1$memwr$\valids$rtl/cache_metadata.v:18$689_EN[0:0]$830
+    65/79: $1$memwr$\valids$rtl/cache_metadata.v:18$688_EN[0:0]$829
+    66/79: $1$memwr$\valids$rtl/cache_metadata.v:18$687_EN[0:0]$828
+    67/79: $1$memwr$\valids$rtl/cache_metadata.v:18$686_EN[0:0]$827
+    68/79: $1$memwr$\valids$rtl/cache_metadata.v:18$685_EN[0:0]$826
+    69/79: $1$memwr$\valids$rtl/cache_metadata.v:18$684_EN[0:0]$825
+    70/79: $1$memwr$\valids$rtl/cache_metadata.v:18$683_EN[0:0]$824
+    71/79: $1$memwr$\valids$rtl/cache_metadata.v:18$682_EN[0:0]$823
+    72/79: $1$memwr$\valids$rtl/cache_metadata.v:18$681_EN[0:0]$822
+    73/79: $1$memwr$\valids$rtl/cache_metadata.v:21$747_EN[0:0]$892
+    74/79: $1$memwr$\valids$rtl/cache_metadata.v:21$747_ADDR[5:0]$891
+    75/79: $1$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$890
+    76/79: $1$memwr$\tags$rtl/cache_metadata.v:21$746_DATA[21:0]$889
+    77/79: $1$memwr$\tags$rtl/cache_metadata.v:21$746_ADDR[5:0]$888
+    78/79: $1$memwr$\valids$rtl/cache_metadata.v:20$745_EN[0:0]$887
+    79/79: $1$memwr$\valids$rtl/cache_metadata.v:20$745_ADDR[5:0]$886
+Creating decoders for process `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+     1/3: $1$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$678
+     2/3: $1$memwr$\words$rtl/cache_data_ram.v:15$670_DATA[31:0]$677
+     3/3: $1$memwr$\words$rtl/cache_data_ram.v:15$670_ADDR[7:0]$676
+
+7.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+7.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\direct_mapped_cache.\hit_event' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1318' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\miss_event' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1319' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\state' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1320' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\addr_q' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1321' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\wdata_q' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1322' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\rdata_q' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1323' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\write_q' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1324' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\hit_q' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1325' with positive edge clock.
+Creating register for signal `\direct_mapped_cache.\refill_word' using process `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+  created $dff cell `$procdff$1326' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.\i' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1327' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$681_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1328' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$682_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1329' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$683_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1330' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$684_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1331' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$685_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1332' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$686_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1333' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$687_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1334' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$688_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1335' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$689_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1336' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$690_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1337' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$691_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1338' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$692_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1339' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$693_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1340' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$694_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1341' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$695_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1342' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$696_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1343' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$697_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1344' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$698_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1345' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$699_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1346' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$700_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1347' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$701_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1348' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$702_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1349' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$703_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1350' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$704_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1351' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$705_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1352' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$706_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1353' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$707_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1354' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$708_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1355' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$709_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1356' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$710_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1357' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$711_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1358' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$712_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1359' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$713_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1360' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$714_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1361' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$715_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1362' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$716_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1363' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$717_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1364' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$718_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1365' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$719_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1366' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$720_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1367' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$721_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1368' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$722_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1369' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$723_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1370' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$724_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1371' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$725_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1372' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$726_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1373' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$727_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1374' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$728_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1375' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$729_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1376' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$730_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1377' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$731_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1378' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$732_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1379' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$733_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1380' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$734_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1381' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$735_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1382' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$736_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1383' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$737_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1384' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$738_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1385' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$739_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1386' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$740_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1387' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$741_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1388' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$742_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1389' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$743_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1390' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:18$744_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1391' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:20$745_ADDR' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1392' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:20$745_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1393' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\tags$rtl/cache_metadata.v:21$746_ADDR' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1394' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\tags$rtl/cache_metadata.v:21$746_DATA' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1395' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\tags$rtl/cache_metadata.v:21$746_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1396' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:21$747_ADDR' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1397' with positive edge clock.
+Creating register for signal `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$memwr$\valids$rtl/cache_metadata.v:21$747_EN' using process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+  created $dff cell `$procdff$1398' with positive edge clock.
+Creating register for signal `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.\read_data' using process `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+  created $dff cell `$procdff$1399' with positive edge clock.
+Creating register for signal `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$memwr$\words$rtl/cache_data_ram.v:15$670_ADDR' using process `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+  created $dff cell `$procdff$1400' with positive edge clock.
+Creating register for signal `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$memwr$\words$rtl/cache_data_ram.v:15$670_DATA' using process `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+  created $dff cell `$procdff$1401' with positive edge clock.
+Creating register for signal `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$memwr$\words$rtl/cache_data_ram.v:15$670_EN' using process `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+  created $dff cell `$procdff$1402' with positive edge clock.
+
+7.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+7.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 12 empty switches in `\direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+Removing empty process `direct_mapped_cache.$rtl/direct_mapped_cache.v:72$proc$271'.
+Found and cleaned up 3 empty switches in `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+Removing empty process `$paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.$rtl/cache_metadata.v:16$proc$750'.
+Found and cleaned up 1 empty switch in `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+Removing empty process `$paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.$rtl/cache_data_ram.v:13$proc$671'.
+Cleaned up 16 empty switches.
+
+7.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$e254feddc3b1496d8008eb8a68b678c9f28429fc\cache_address_decoder.
+<suppressed ~2 debug messages>
+Optimizing module direct_mapped_cache.
+<suppressed ~6 debug messages>
+Optimizing module $paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.
+Optimizing module $paramod\cache_tag_comparator\TAG_BITS=s32'00000000000000000000000000010110.
+Optimizing module $paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.
+
+7.4. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$e254feddc3b1496d8008eb8a68b678c9f28429fc\cache_address_decoder...
+Checking module direct_mapped_cache...
+Checking module $paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata...
+Checking module $paramod\cache_tag_comparator\TAG_BITS=s32'00000000000000000000000000010110...
+Checking module $paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram...
+Found and reported 0 problems.
+
+7.5. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$e254feddc3b1496d8008eb8a68b678c9f28429fc\cache_address_decoder.
+Deleting now unused module $paramod$69f9378758474f25642a003a49a59475522ad984\cache_metadata.
+Deleting now unused module $paramod\cache_tag_comparator\TAG_BITS=s32'00000000000000000000000000010110.
+Deleting now unused module $paramod$ec186e4b6f9a0759c1b4578120d4c90f8f61be39\cache_data_ram.
+<suppressed ~4 debug messages>
+
+7.6. Executing TRIBUF pass.
+
+7.7. Executing DEMINOUT pass (demote inout ports to input or output).
+
+7.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~2 debug messages>
+
+7.9. Executing CHECK pass (checking for obvious problems).
+Checking module direct_mapped_cache...
+Found and reported 0 problems.
+
+7.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 76 unused cells and 380 unused wires.
+<suppressed ~78 debug messages>
+
+7.11. Executing OPT pass (performing simple optimizations).
+
+7.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 273 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 246 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 245 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~84 debug messages>
+Removed a total of 28 cells.
+
+7.11.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1091.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1085.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1079.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1073.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1067.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1061.
+    dead port 1/2 on $mux $flatten\metadata.$procmux$1055.
+Removed 7 multiplexer ports.
+<suppressed ~215 debug messages>
+
+7.11.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+    Consolidated identical input bits for $mux cell $flatten\metadata.$procmux$1064:
+      Old ports: A=22'0000000000000000000000, B=22'1111111111111111111111, Y=$flatten\metadata.$procmux$1064_Y
+      New ports: A=1'0, B=1'1, Y=$flatten\metadata.$procmux$1064_Y [0]
+      New connections: $flatten\metadata.$procmux$1064_Y [21:1] = { $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] $flatten\metadata.$procmux$1064_Y [0] }
+    Consolidated identical input bits for $mux cell $flatten\data_store.$procmux$1310:
+      Old ports: A=0, B=32'11111111111111111111111111111111, Y=$flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674
+      New ports: A=1'0, B=1'1, Y=$flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0]
+      New connections: $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [31:1] = { $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] $flatten\data_store.$0$memwr$\words$rtl/cache_data_ram.v:15$670_EN[31:0]$674 [0] }
+  Optimizing cells in module \direct_mapped_cache.
+    Consolidated identical input bits for $mux cell $flatten\metadata.$procmux$1295:
+      Old ports: A=$flatten\metadata.$2$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$897, B=22'0000000000000000000000, Y=$flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819
+      New ports: A=$flatten\metadata.$procmux$1064_Y [0], B=1'0, Y=$flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0]
+      New connections: $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [21:1] = { $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] $flatten\metadata.$0$memwr$\tags$rtl/cache_metadata.v:21$746_EN[21:0]$819 [0] }
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 3 changes.
+
+7.11.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 238 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 173 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 171 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~201 debug messages>
+Removed a total of 67 cells.
+
+7.11.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.11.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 0 unused cells and 102 unused wires.
+<suppressed ~1 debug messages>
+
+7.11.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.11.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.11.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~76 debug messages>
+
+7.11.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.11.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 171 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.11.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.11.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.11.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.11.16. Finished fast OPT passes. (There is nothing left to do.)
+
+7.12. Executing FSM pass (extract and optimize FSM).
+
+7.12.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register direct_mapped_cache.state.
+
+7.12.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\direct_mapped_cache'.
+  found $dff cell for state register: $procdff$1320
+  root of input selection tree: $0\state[2:0]
+  found reset state: 3'000 (guessed from mux tree)
+  found ctrl input: \reset
+  found ctrl input: $procmux$1022_CMP
+  found ctrl input: $procmux$1025_CMP
+  found ctrl input: \mem_req_write
+  found ctrl input: $procmux$1034_CMP
+  found ctrl input: $procmux$1037_CMP
+  found ctrl input: $procmux$1044_CMP
+  found ctrl input: $procmux$1000_CMP
+  found state code: 3'000
+  found ctrl input: \cpu_rsp_ready
+  found ctrl input: \mem_rsp_valid
+  found state code: 3'110
+  found ctrl input: $procmux$1027_CMP
+  found state code: 3'101
+  found ctrl input: $procmux$1031_CMP
+  found state code: 3'010
+  found state code: 3'011
+  found ctrl input: \write_q
+  found ctrl input: \lookup_hit
+  found state code: 3'100
+  found ctrl input: $procmux$1012_CMP
+  found state code: 3'001
+  found ctrl output: $procmux$1022_CMP
+  found ctrl output: $procmux$1025_CMP
+  found ctrl output: \mem_req_write
+  found ctrl output: $procmux$1034_CMP
+  found ctrl output: $procmux$1037_CMP
+  found ctrl output: $procmux$1044_CMP
+  found ctrl output: $procmux$1000_CMP
+  ctrl inputs: { $procmux$1031_CMP $procmux$1027_CMP $procmux$1012_CMP \lookup_hit \write_q \mem_rsp_valid \cpu_rsp_ready \reset }
+  ctrl outputs: { $procmux$1044_CMP $procmux$1037_CMP $procmux$1034_CMP $procmux$1025_CMP $procmux$1022_CMP $procmux$1000_CMP $0\state[2:0] \mem_req_write }
+  transition:      3'000 8'--0----0 ->      3'000 10'0000010000
+  transition:      3'000 8'--1----0 ->      3'001 10'0000010010
+  transition:      3'000 8'-------1 ->      3'000 10'0000010000
+  transition:      3'100 8'-0-----0 ->      3'100 10'0000001001
+  transition:      3'100 8'-1-----0 ->      3'101 10'0000001011
+  transition:      3'100 8'-------1 ->      3'000 10'0000000001
+  transition:      3'010 8'-0-----0 ->      3'010 10'0100000100
+  transition:      3'010 8'-1-----0 ->      3'011 10'0100000110
+  transition:      3'010 8'-------1 ->      3'000 10'0100000000
+  transition:      3'110 8'------00 ->      3'110 10'0000101100
+  transition:      3'110 8'------10 ->      3'000 10'0000100000
+  transition:      3'110 8'-------1 ->      3'000 10'0000100000
+  transition:      3'001 8'---00--0 ->      3'010 10'1000000100
+  transition:      3'001 8'---10--0 ->      3'110 10'1000001100
+  transition:      3'001 8'----1--0 ->      3'100 10'1000001000
+  transition:      3'001 8'-------1 ->      3'000 10'1000000000
+  transition:      3'101 8'-----0-0 ->      3'101 10'0001001010
+  transition:      3'101 8'-----1-0 ->      3'110 10'0001001100
+  transition:      3'101 8'-------1 ->      3'000 10'0001000000
+  transition:      3'011 8'-----0-0 ->      3'011 10'0010000110
+  transition:      3'011 8'0----1-0 ->      3'010 10'0010000100
+  transition:      3'011 8'1----1-0 ->      3'110 10'0010001100
+  transition:      3'011 8'-------1 ->      3'000 10'0010000000
+
+7.12.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$1475' from module `\direct_mapped_cache'.
+
+7.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 19 unused cells and 19 unused wires.
+<suppressed ~20 debug messages>
+
+7.12.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$1475' from module `\direct_mapped_cache'.
+  Removing unused output signal $0\state[2:0] [0].
+  Removing unused output signal $0\state[2:0] [1].
+  Removing unused output signal $0\state[2:0] [2].
+  Removing unused output signal $procmux$1025_CMP.
+
+7.12.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$1475' from module `\direct_mapped_cache' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ------1
+  100 -> -----1-
+  010 -> ----1--
+  110 -> ---1---
+  001 -> --1----
+  101 -> -1-----
+  011 -> 1------
+
+7.12.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$1475' from module `direct_mapped_cache':
+-------------------------------------
+
+  Information on FSM $fsm$\state$1475 (\state):
+
+  Number of input signals:    8
+  Number of output signals:   6
+  Number of state bits:       7
+
+  Input signals:
+    0: \reset
+    1: \cpu_rsp_ready
+    2: \mem_rsp_valid
+    3: \write_q
+    4: \lookup_hit
+    5: $procmux$1012_CMP
+    6: $procmux$1027_CMP
+    7: $procmux$1031_CMP
+
+  Output signals:
+    0: \mem_req_write
+    1: $procmux$1000_CMP
+    2: $procmux$1022_CMP
+    3: $procmux$1034_CMP
+    4: $procmux$1037_CMP
+    5: $procmux$1044_CMP
+
+  State encoding:
+    0:  7'------1  <RESET STATE>
+    1:  7'-----1-
+    2:  7'----1--
+    3:  7'---1---
+    4:  7'--1----
+    5:  7'-1-----
+    6:  7'1------
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 8'--0----0   ->     0 6'000010
+      1:     0 8'-------1   ->     0 6'000010
+      2:     0 8'--1----0   ->     4 6'000010
+      3:     1 8'-------1   ->     0 6'000001
+      4:     1 8'-0-----0   ->     1 6'000001
+      5:     1 8'-1-----0   ->     5 6'000001
+      6:     2 8'-------1   ->     0 6'010000
+      7:     2 8'-0-----0   ->     2 6'010000
+      8:     2 8'-1-----0   ->     6 6'010000
+      9:     3 8'------10   ->     0 6'000100
+     10:     3 8'-------1   ->     0 6'000100
+     11:     3 8'------00   ->     3 6'000100
+     12:     4 8'-------1   ->     0 6'100000
+     13:     4 8'----1--0   ->     1 6'100000
+     14:     4 8'---00--0   ->     2 6'100000
+     15:     4 8'---10--0   ->     3 6'100000
+     16:     5 8'-------1   ->     0 6'000000
+     17:     5 8'-----1-0   ->     3 6'000000
+     18:     5 8'-----0-0   ->     5 6'000000
+     19:     6 8'-------1   ->     0 6'001000
+     20:     6 8'0----1-0   ->     2 6'001000
+     21:     6 8'1----1-0   ->     3 6'001000
+     22:     6 8'-----0-0   ->     6 6'001000
+
+-------------------------------------
+
+7.12.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$1475' from module `\direct_mapped_cache'.
+
+7.13. Executing OPT pass (performing simple optimizations).
+
+7.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~8 debug messages>
+
+7.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 191 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 188 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+7.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~64 debug messages>
+
+7.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 188 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.13.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$1326 ($dff) from module direct_mapped_cache (D = $procmux$933_Y, Q = \refill_word, rval = 2'00).
+Adding EN signal on $auto$ff.cc:337:slice$1560 ($sdff) from module direct_mapped_cache (D = $procmux$933_Y, Q = \refill_word).
+Adding SRST signal on $procdff$1318 ($dff) from module direct_mapped_cache (D = \lookup_hit, Q = \hit_event, rval = 1'0).
+Adding SRST signal on $procdff$1319 ($dff) from module direct_mapped_cache (D = $rtl/direct_mapped_cache.v:42$logic_not$237_Y, Q = \miss_event, rval = 1'0).
+Adding SRST signal on $procdff$1321 ($dff) from module direct_mapped_cache (D = $procmux$1013_Y, Q = \addr_q, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$1584 ($sdff) from module direct_mapped_cache (D = \cpu_req_addr, Q = \addr_q).
+Adding SRST signal on $procdff$1322 ($dff) from module direct_mapped_cache (D = $procmux$999_Y, Q = \wdata_q, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$1588 ($sdff) from module direct_mapped_cache (D = \cpu_req_wdata, Q = \wdata_q).
+Adding SRST signal on $procdff$1323 ($dff) from module direct_mapped_cache (D = $procmux$978_Y, Q = \rdata_q, rval = 0).
+Adding EN signal on $auto$ff.cc:337:slice$1592 ($sdff) from module direct_mapped_cache (D = $procmux$978_Y, Q = \rdata_q).
+Adding SRST signal on $procdff$1324 ($dff) from module direct_mapped_cache (D = $procmux$965_Y, Q = \write_q, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$1604 ($sdff) from module direct_mapped_cache (D = \cpu_req_write, Q = \write_q).
+Adding SRST signal on $procdff$1325 ($dff) from module direct_mapped_cache (D = $procmux$951_Y, Q = \hit_q, rval = 1'0).
+Adding EN signal on $auto$ff.cc:337:slice$1608 ($sdff) from module direct_mapped_cache (D = \lookup_hit, Q = \hit_q).
+
+7.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 17 unused cells and 30 unused wires.
+<suppressed ~18 debug messages>
+
+7.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~2 debug messages>
+
+7.13.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.13.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~41 debug messages>
+
+7.13.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.13.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 189 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 184 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 183 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~18 debug messages>
+Removed a total of 6 cells.
+
+7.13.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.13.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 0 unused cells and 6 unused wires.
+<suppressed ~1 debug messages>
+
+7.13.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.13.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.13.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~41 debug messages>
+
+7.13.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.13.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 183 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.13.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.13.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.13.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.13.23. Finished fast OPT passes. (There is nothing left to do.)
+
+7.14. Executing WREDUCE pass (reducing word size of cells).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1429 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1430 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1431 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1432 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1433 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1434 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1435 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1436 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1437 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1438 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1439 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1440 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1441 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1442 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1443 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1444 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1445 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1446 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1447 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1448 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1449 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1450 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1451 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1452 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1453 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1454 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1455 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1456 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1457 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1458 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1459 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1460 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1461 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1462 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1463 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1464 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1465 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1466 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1428 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1427 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1426 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1425 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1424 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1423 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1422 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1421 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1420 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1419 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1418 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1417 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1416 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1415 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1414 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1413 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1412 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1411 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1409 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1410 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1403 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1404 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1405 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1406 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1407 (metadata.valids).
+Removed top 26 address bits (of 32) from memory init port direct_mapped_cache.$flatten\metadata.$auto$proc_memwr.cc:46:proc_memwr$1408 (metadata.valids).
+Removed top 1 bits (of 3) from port B of cell direct_mapped_cache.$auto$fsm_map.cc:77:implement_pattern_cache$1509 ($eq).
+Removed top 2 bits (of 3) from port B of cell direct_mapped_cache.$auto$simple.cc:214:make_patterns_logic$1599 ($ne).
+Removed top 1 bits (of 2) from port B of cell direct_mapped_cache.$auto$simple.cc:214:make_patterns_logic$1601 ($ne).
+Removed top 28 bits (of 32) from port B of cell direct_mapped_cache.$rtl/direct_mapped_cache.v:70$add$269 ($add).
+
+7.15. Executing PEEPOPT pass (run peephole optimizers).
+
+7.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.17. Executing SHARE pass (SAT-based resource sharing).
+
+7.18. Executing TECHMAP pass (map to technology primitives).
+
+7.18.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/cmp2lut.v' to AST representation.
+Generating RTLIL representation for module `\_90_lut_cmp_'.
+Successfully finished Verilog frontend.
+
+7.18.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~6 debug messages>
+
+7.19. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.20. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.21. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module direct_mapped_cache:
+  creating $macc model for $rtl/direct_mapped_cache.v:105$add$277 ($add).
+  creating $macc model for $rtl/direct_mapped_cache.v:70$add$269 ($add).
+  creating $alu model for $macc $rtl/direct_mapped_cache.v:70$add$269.
+  creating $alu model for $macc $rtl/direct_mapped_cache.v:105$add$277.
+  creating $alu cell for $rtl/direct_mapped_cache.v:105$add$277: $auto$alumacc.cc:578:replace_alu$1610
+  creating $alu cell for $rtl/direct_mapped_cache.v:70$add$269: $auto$alumacc.cc:578:replace_alu$1613
+  created 2 $alu and 0 $macc cells.
+
+7.22. Executing OPT pass (performing simple optimizations).
+
+7.22.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.22.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 183 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.22.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~41 debug messages>
+
+7.22.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.22.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 183 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.22.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.22.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.22.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.22.9. Finished fast OPT passes. (There is nothing left to do.)
+
+7.23. Executing MEMORY pass.
+
+7.23.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+7.23.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 2017 transformations.
+
+7.23.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+  Analyzing direct_mapped_cache.data_store.words write port 0.
+  Analyzing direct_mapped_cache.metadata.tags write port 0.
+  Analyzing direct_mapped_cache.metadata.valids write port 0.
+  Analyzing direct_mapped_cache.metadata.valids write port 1.
+  Analyzing direct_mapped_cache.metadata.valids write port 2.
+  Analyzing direct_mapped_cache.metadata.valids write port 3.
+  Analyzing direct_mapped_cache.metadata.valids write port 4.
+  Analyzing direct_mapped_cache.metadata.valids write port 5.
+  Analyzing direct_mapped_cache.metadata.valids write port 6.
+  Analyzing direct_mapped_cache.metadata.valids write port 7.
+  Analyzing direct_mapped_cache.metadata.valids write port 8.
+  Analyzing direct_mapped_cache.metadata.valids write port 9.
+  Analyzing direct_mapped_cache.metadata.valids write port 10.
+  Analyzing direct_mapped_cache.metadata.valids write port 11.
+  Analyzing direct_mapped_cache.metadata.valids write port 12.
+  Analyzing direct_mapped_cache.metadata.valids write port 13.
+  Analyzing direct_mapped_cache.metadata.valids write port 14.
+  Analyzing direct_mapped_cache.metadata.valids write port 15.
+  Analyzing direct_mapped_cache.metadata.valids write port 16.
+  Analyzing direct_mapped_cache.metadata.valids write port 17.
+  Analyzing direct_mapped_cache.metadata.valids write port 18.
+  Analyzing direct_mapped_cache.metadata.valids write port 19.
+  Analyzing direct_mapped_cache.metadata.valids write port 20.
+  Analyzing direct_mapped_cache.metadata.valids write port 21.
+  Analyzing direct_mapped_cache.metadata.valids write port 22.
+  Analyzing direct_mapped_cache.metadata.valids write port 23.
+  Analyzing direct_mapped_cache.metadata.valids write port 24.
+  Analyzing direct_mapped_cache.metadata.valids write port 25.
+  Analyzing direct_mapped_cache.metadata.valids write port 26.
+  Analyzing direct_mapped_cache.metadata.valids write port 27.
+  Analyzing direct_mapped_cache.metadata.valids write port 28.
+  Analyzing direct_mapped_cache.metadata.valids write port 29.
+  Analyzing direct_mapped_cache.metadata.valids write port 30.
+  Analyzing direct_mapped_cache.metadata.valids write port 31.
+  Analyzing direct_mapped_cache.metadata.valids write port 32.
+  Analyzing direct_mapped_cache.metadata.valids write port 33.
+  Analyzing direct_mapped_cache.metadata.valids write port 34.
+  Analyzing direct_mapped_cache.metadata.valids write port 35.
+  Analyzing direct_mapped_cache.metadata.valids write port 36.
+  Analyzing direct_mapped_cache.metadata.valids write port 37.
+  Analyzing direct_mapped_cache.metadata.valids write port 38.
+  Analyzing direct_mapped_cache.metadata.valids write port 39.
+  Analyzing direct_mapped_cache.metadata.valids write port 40.
+  Analyzing direct_mapped_cache.metadata.valids write port 41.
+  Analyzing direct_mapped_cache.metadata.valids write port 42.
+  Analyzing direct_mapped_cache.metadata.valids write port 43.
+  Analyzing direct_mapped_cache.metadata.valids write port 44.
+  Analyzing direct_mapped_cache.metadata.valids write port 45.
+  Analyzing direct_mapped_cache.metadata.valids write port 46.
+  Analyzing direct_mapped_cache.metadata.valids write port 47.
+  Analyzing direct_mapped_cache.metadata.valids write port 48.
+  Analyzing direct_mapped_cache.metadata.valids write port 49.
+  Analyzing direct_mapped_cache.metadata.valids write port 50.
+  Analyzing direct_mapped_cache.metadata.valids write port 51.
+  Analyzing direct_mapped_cache.metadata.valids write port 52.
+  Analyzing direct_mapped_cache.metadata.valids write port 53.
+  Analyzing direct_mapped_cache.metadata.valids write port 54.
+  Analyzing direct_mapped_cache.metadata.valids write port 55.
+  Analyzing direct_mapped_cache.metadata.valids write port 56.
+  Analyzing direct_mapped_cache.metadata.valids write port 57.
+  Analyzing direct_mapped_cache.metadata.valids write port 58.
+  Analyzing direct_mapped_cache.metadata.valids write port 59.
+  Analyzing direct_mapped_cache.metadata.valids write port 60.
+  Analyzing direct_mapped_cache.metadata.valids write port 61.
+  Analyzing direct_mapped_cache.metadata.valids write port 62.
+  Analyzing direct_mapped_cache.metadata.valids write port 63.
+  Analyzing direct_mapped_cache.metadata.valids write port 64.
+  Analyzing direct_mapped_cache.metadata.valids write port 65.
+
+7.23.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+7.23.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+Checking read port `\data_store.words'[0] in module `\direct_mapped_cache':
+    merging output FF to cell.
+    Write port 0: non-transparent.
+Checking read port `\metadata.tags'[0] in module `\direct_mapped_cache':
+    no output FF found.
+Checking read port `\metadata.valids'[0] in module `\direct_mapped_cache':
+    no output FF found.
+Checking read port address `\metadata.tags'[0] in module `\direct_mapped_cache':
+    merged address FF to cell.
+Checking read port address `\metadata.valids'[0] in module `\direct_mapped_cache':
+    merged address FF to cell.
+
+7.23.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 1 unused cells and 33 unused wires.
+<suppressed ~2 debug messages>
+
+7.23.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+Consolidating write ports of memory direct_mapped_cache.metadata.valids by address:
+  Merging ports 0, 1 (address 6'000000).
+  Merging ports 0, 2 (address 6'000000).
+  Merging ports 0, 3 (address 6'000000).
+  Merging ports 0, 4 (address 6'000000).
+  Merging ports 0, 5 (address 6'000000).
+  Merging ports 0, 6 (address 6'000000).
+  Merging ports 0, 7 (address 6'000000).
+  Merging ports 0, 8 (address 6'000000).
+  Merging ports 0, 9 (address 6'000000).
+  Merging ports 0, 10 (address 6'000000).
+  Merging ports 0, 11 (address 6'000000).
+  Merging ports 0, 12 (address 6'000000).
+  Merging ports 0, 13 (address 6'000000).
+  Merging ports 0, 14 (address 6'000000).
+  Merging ports 0, 15 (address 6'000000).
+  Merging ports 0, 16 (address 6'000000).
+  Merging ports 0, 17 (address 6'000000).
+  Merging ports 0, 18 (address 6'000000).
+  Merging ports 0, 19 (address 6'000000).
+  Merging ports 0, 20 (address 6'000000).
+  Merging ports 0, 21 (address 6'000000).
+  Merging ports 0, 22 (address 6'000000).
+  Merging ports 0, 23 (address 6'000000).
+  Merging ports 0, 24 (address 6'000000).
+  Merging ports 0, 25 (address 6'000000).
+  Merging ports 0, 26 (address 6'000000).
+  Merging ports 0, 27 (address 6'000000).
+  Merging ports 0, 28 (address 6'000000).
+  Merging ports 0, 29 (address 6'000000).
+  Merging ports 0, 30 (address 6'000000).
+  Merging ports 0, 31 (address 6'000000).
+  Merging ports 0, 32 (address 6'000000).
+  Merging ports 34, 35 (address 6'100010).
+  Merging ports 36, 37 (address 6'100100).
+  Merging ports 36, 38 (address 6'100100).
+  Merging ports 36, 39 (address 6'100100).
+  Merging ports 40, 41 (address 6'101000).
+  Merging ports 40, 42 (address 6'101000).
+  Merging ports 40, 43 (address 6'101000).
+  Merging ports 40, 44 (address 6'101000).
+  Merging ports 40, 45 (address 6'101000).
+  Merging ports 40, 46 (address 6'101000).
+  Merging ports 40, 47 (address 6'101000).
+  Merging ports 48, 49 (address 6'110000).
+  Merging ports 48, 50 (address 6'110000).
+  Merging ports 48, 51 (address 6'110000).
+  Merging ports 48, 52 (address 6'110000).
+  Merging ports 48, 53 (address 6'110000).
+  Merging ports 48, 54 (address 6'110000).
+  Merging ports 48, 55 (address 6'110000).
+  Merging ports 48, 56 (address 6'110000).
+  Merging ports 48, 57 (address 6'110000).
+  Merging ports 48, 58 (address 6'110000).
+  Merging ports 48, 59 (address 6'110000).
+  Merging ports 48, 60 (address 6'110000).
+  Merging ports 48, 61 (address 6'110000).
+  Merging ports 48, 62 (address 6'110000).
+  Merging ports 48, 63 (address 6'110000).
+  Merging ports 64, 65 (address \addr_q [9:4]).
+Consolidating write ports of memory direct_mapped_cache.metadata.valids by address:
+  Merging ports 1, 2 (address 6'100001).
+  Merging ports 1, 3 (address 6'100000).
+  Merging ports 1, 4 (address 6'100000).
+  Merging ports 1, 5 (address 6'100000).
+Consolidating write ports of memory direct_mapped_cache.metadata.valids by address:
+Consolidating write ports of memory direct_mapped_cache.metadata.valids using sat-based resource sharing:
+
+7.23.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+7.23.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 2 unused cells and 2 unused wires.
+<suppressed ~3 debug messages>
+
+7.23.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7.24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.25. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+using FF mapping for memory direct_mapped_cache.metadata.valids
+mapping memory direct_mapped_cache.data_store.words via $__ICE40_RAM4K_
+mapping memory direct_mapped_cache.metadata.tags via $__ICE40_RAM4K_
+<suppressed ~151 debug messages>
+
+7.26. Executing TECHMAP pass (map to technology primitives).
+
+7.26.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/brams_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/brams_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_RAM4K_'.
+Successfully finished Verilog frontend.
+
+7.26.2. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/spram_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/spram_map.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_SPRAM_'.
+Successfully finished Verilog frontend.
+
+7.26.3. Continuing TECHMAP pass.
+Using template $paramod$a1f6b5309207cf102bfb625dccbd224ad06df61d$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+No more expansions possible.
+<suppressed ~29 debug messages>
+
+7.27. Executing ICE40_BRAMINIT pass.
+
+7.28. Executing OPT pass (performing simple optimizations).
+
+7.28.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~36 debug messages>
+
+7.28.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 119 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 116 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 115 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~12 debug messages>
+Removed a total of 4 cells.
+
+7.28.3. Executing OPT_DFF pass (perform DFF optimizations).
+Removing always-active EN on $auto$mem.cc:1172:emulate_transparency$1672 ($dffe) from module direct_mapped_cache.
+Removing always-active EN on $auto$mem.cc:1172:emulate_transparency$1688 ($dffe) from module direct_mapped_cache.
+
+7.28.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 0 unused cells and 93 unused wires.
+<suppressed ~2 debug messages>
+
+7.28.5. Rerunning OPT passes. (Removed registers in this run.)
+
+7.28.6. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.28.7. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 114 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.28.8. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.28.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.28.10. Finished fast OPT passes.
+
+7.29. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+Mapping memory \metadata.valids in module \direct_mapped_cache:
+  created 64 $dff cells and 0 static cells of width 1.
+Extracted addr FF from read port 0 of direct_mapped_cache.metadata.valids: $\metadata.valids$rdreg[0]
+  read interface: 1 $dff and 63 $mux cells.
+  write interface: 192 write mux blocks.
+
+7.30. Executing OPT pass (performing simple optimizations).
+
+7.30.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~207 debug messages>
+
+7.30.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 527 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.30.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~279 debug messages>
+
+7.30.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+    Consolidated identical input bits for $mux cell $rtl/direct_mapped_cache.v:70$ternary$270:
+      Old ports: A={ \addr_q [31:4] \refill_word 2'00 }, B=\addr_q, Y=\mem_req_addr
+      New ports: A={ \refill_word 2'00 }, B=\addr_q [3:0], Y=\mem_req_addr [3:0]
+      New connections: \mem_req_addr [31:4] = \addr_q [31:4]
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 1 changes.
+
+7.30.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 527 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.30.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.30.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 0 unused cells and 329 unused wires.
+<suppressed ~1 debug messages>
+
+7.30.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.30.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.30.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~279 debug messages>
+
+7.30.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.30.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 527 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.30.13. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $memory\metadata.valids[0]$1719 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[0][2][0]$y$2073, Q = \metadata.valids[0]).
+Adding EN signal on $memory\metadata.valids[1]$1721 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[1][2][0]$y$2091, Q = \metadata.valids[1]).
+Adding EN signal on $memory\metadata.valids[2]$1723 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[2][2][0]$y$2111, Q = \metadata.valids[2]).
+Adding EN signal on $memory\metadata.valids[3]$1725 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[3][2][0]$y$2127, Q = \metadata.valids[3]).
+Adding EN signal on $memory\metadata.valids[4]$1727 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[4][2][0]$y$2147, Q = \metadata.valids[4]).
+Adding EN signal on $memory\metadata.valids[5]$1729 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[5][2][0]$y$2163, Q = \metadata.valids[5]).
+Adding EN signal on $memory\metadata.valids[6]$1731 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[6][2][0]$y$2181, Q = \metadata.valids[6]).
+Adding EN signal on $memory\metadata.valids[7]$1733 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[7][2][0]$y$2197, Q = \metadata.valids[7]).
+Adding EN signal on $memory\metadata.valids[8]$1735 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[8][2][0]$y$2215, Q = \metadata.valids[8]).
+Adding EN signal on $memory\metadata.valids[9]$1737 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[9][2][0]$y$2229, Q = \metadata.valids[9]).
+Adding EN signal on $memory\metadata.valids[10]$1739 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[10][2][0]$y$2243, Q = \metadata.valids[10]).
+Adding EN signal on $memory\metadata.valids[11]$1741 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[11][2][0]$y$2257, Q = \metadata.valids[11]).
+Adding EN signal on $memory\metadata.valids[12]$1743 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[12][2][0]$y$2271, Q = \metadata.valids[12]).
+Adding EN signal on $memory\metadata.valids[13]$1745 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[13][2][0]$y$2285, Q = \metadata.valids[13]).
+Adding EN signal on $memory\metadata.valids[14]$1747 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[14][2][0]$y$2299, Q = \metadata.valids[14]).
+Adding EN signal on $memory\metadata.valids[15]$1749 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[15][2][0]$y$2313, Q = \metadata.valids[15]).
+Adding EN signal on $memory\metadata.valids[16]$1751 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[16][2][0]$y$2333, Q = \metadata.valids[16]).
+Adding EN signal on $memory\metadata.valids[17]$1753 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[17][2][0]$y$2347, Q = \metadata.valids[17]).
+Adding EN signal on $memory\metadata.valids[18]$1755 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[18][2][0]$y$2361, Q = \metadata.valids[18]).
+Adding EN signal on $memory\metadata.valids[19]$1757 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[19][2][0]$y$2375, Q = \metadata.valids[19]).
+Adding EN signal on $memory\metadata.valids[20]$1759 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[20][2][0]$y$2389, Q = \metadata.valids[20]).
+Adding EN signal on $memory\metadata.valids[21]$1761 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[21][2][0]$y$2403, Q = \metadata.valids[21]).
+Adding EN signal on $memory\metadata.valids[22]$1763 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[22][2][0]$y$2417, Q = \metadata.valids[22]).
+Adding EN signal on $memory\metadata.valids[23]$1765 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[23][2][0]$y$2431, Q = \metadata.valids[23]).
+Adding EN signal on $memory\metadata.valids[24]$1767 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[24][2][0]$y$2447, Q = \metadata.valids[24]).
+Adding EN signal on $memory\metadata.valids[25]$1769 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[25][2][0]$y$2461, Q = \metadata.valids[25]).
+Adding EN signal on $memory\metadata.valids[26]$1771 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[26][2][0]$y$2475, Q = \metadata.valids[26]).
+Adding EN signal on $memory\metadata.valids[27]$1773 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[27][2][0]$y$2489, Q = \metadata.valids[27]).
+Adding EN signal on $memory\metadata.valids[28]$1775 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[28][2][0]$y$2503, Q = \metadata.valids[28]).
+Adding EN signal on $memory\metadata.valids[29]$1777 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[29][2][0]$y$2517, Q = \metadata.valids[29]).
+Adding EN signal on $memory\metadata.valids[30]$1779 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[30][2][0]$y$2531, Q = \metadata.valids[30]).
+Adding EN signal on $memory\metadata.valids[31]$1781 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[31][2][0]$y$2545, Q = \metadata.valids[31]).
+Adding EN signal on $memory\metadata.valids[32]$1783 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[32][2][0]$y$2567, Q = \metadata.valids[32]).
+Adding EN signal on $memory\metadata.valids[33]$1785 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[33][2][0]$y$2581, Q = \metadata.valids[33]).
+Adding EN signal on $memory\metadata.valids[34]$1787 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[34][2][0]$y$2595, Q = \metadata.valids[34]).
+Adding EN signal on $memory\metadata.valids[35]$1789 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[35][2][0]$y$2609, Q = \metadata.valids[35]).
+Adding EN signal on $memory\metadata.valids[36]$1791 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[36][2][0]$y$2623, Q = \metadata.valids[36]).
+Adding EN signal on $memory\metadata.valids[37]$1793 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[37][2][0]$y$2637, Q = \metadata.valids[37]).
+Adding EN signal on $memory\metadata.valids[38]$1795 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[38][2][0]$y$2651, Q = \metadata.valids[38]).
+Adding EN signal on $memory\metadata.valids[39]$1797 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[39][2][0]$y$2665, Q = \metadata.valids[39]).
+Adding EN signal on $memory\metadata.valids[40]$1799 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[40][2][0]$y$2681, Q = \metadata.valids[40]).
+Adding EN signal on $memory\metadata.valids[41]$1801 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[41][2][0]$y$2695, Q = \metadata.valids[41]).
+Adding EN signal on $memory\metadata.valids[42]$1803 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[42][2][0]$y$2709, Q = \metadata.valids[42]).
+Adding EN signal on $memory\metadata.valids[43]$1805 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[43][2][0]$y$2723, Q = \metadata.valids[43]).
+Adding EN signal on $memory\metadata.valids[44]$1807 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[44][2][0]$y$2737, Q = \metadata.valids[44]).
+Adding EN signal on $memory\metadata.valids[45]$1809 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[45][2][0]$y$2751, Q = \metadata.valids[45]).
+Adding EN signal on $memory\metadata.valids[46]$1811 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[46][2][0]$y$2765, Q = \metadata.valids[46]).
+Adding EN signal on $memory\metadata.valids[47]$1813 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[47][2][0]$y$2779, Q = \metadata.valids[47]).
+Adding EN signal on $memory\metadata.valids[48]$1815 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[48][2][0]$y$2797, Q = \metadata.valids[48]).
+Adding EN signal on $memory\metadata.valids[49]$1817 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[49][2][0]$y$2811, Q = \metadata.valids[49]).
+Adding EN signal on $memory\metadata.valids[50]$1819 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[50][2][0]$y$2825, Q = \metadata.valids[50]).
+Adding EN signal on $memory\metadata.valids[51]$1821 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[51][2][0]$y$2839, Q = \metadata.valids[51]).
+Adding EN signal on $memory\metadata.valids[52]$1823 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[52][2][0]$y$2853, Q = \metadata.valids[52]).
+Adding EN signal on $memory\metadata.valids[53]$1825 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[53][2][0]$y$2867, Q = \metadata.valids[53]).
+Adding EN signal on $memory\metadata.valids[54]$1827 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[54][2][0]$y$2881, Q = \metadata.valids[54]).
+Adding EN signal on $memory\metadata.valids[55]$1829 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[55][2][0]$y$2895, Q = \metadata.valids[55]).
+Adding EN signal on $memory\metadata.valids[56]$1831 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[56][2][0]$y$2911, Q = \metadata.valids[56]).
+Adding EN signal on $memory\metadata.valids[57]$1833 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[57][2][0]$y$2925, Q = \metadata.valids[57]).
+Adding EN signal on $memory\metadata.valids[58]$1835 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[58][2][0]$y$2939, Q = \metadata.valids[58]).
+Adding EN signal on $memory\metadata.valids[59]$1837 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[59][2][0]$y$2953, Q = \metadata.valids[59]).
+Adding EN signal on $memory\metadata.valids[60]$1839 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[60][2][0]$y$2967, Q = \metadata.valids[60]).
+Adding EN signal on $memory\metadata.valids[61]$1841 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[61][2][0]$y$2981, Q = \metadata.valids[61]).
+Adding EN signal on $memory\metadata.valids[62]$1843 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[62][2][0]$y$2995, Q = \metadata.valids[62]).
+Adding EN signal on $memory\metadata.valids[63]$1845 ($dff) from module direct_mapped_cache (D = $memory\metadata.valids$wrmux[63][2][0]$y$3009, Q = \metadata.valids[63]).
+
+7.30.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.30.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~64 debug messages>
+
+7.30.16. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.30.17. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~279 debug messages>
+
+7.30.18. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.30.19. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 591 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 528 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~189 debug messages>
+Removed a total of 63 cells.
+
+7.30.20. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.30.21. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 0 unused cells and 63 unused wires.
+<suppressed ~1 debug messages>
+
+7.30.22. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.30.23. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.30.24. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~281 debug messages>
+
+7.30.25. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.30.26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 528 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.30.27. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.30.28. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.30.29. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.30.30. Finished fast OPT passes. (There is nothing left to do.)
+
+7.31. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+7.32. Executing TECHMAP pass (map to technology primitives).
+
+7.32.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.32.2. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/arith_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/arith_map.v' to AST representation.
+Generating RTLIL representation for module `\_80_ice40_alu'.
+Successfully finished Verilog frontend.
+
+7.32.3. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $dff.
+Using template $paramod$175e67c02b86e96b1288b9dc100122520d7240d8\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using extmapper simplemap for cells of type $or.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000000010 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000010 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+No more expansions possible.
+<suppressed ~742 debug messages>
+
+7.33. Executing OPT pass (performing simple optimizations).
+
+7.33.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~53 debug messages>
+
+7.33.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 1012 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 996 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 994 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~54 debug messages>
+Removed a total of 18 cells.
+
+7.33.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.33.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 1 unused cells and 169 unused wires.
+<suppressed ~2 debug messages>
+
+7.33.5. Finished fast OPT passes.
+
+7.34. Executing ICE40_OPT pass (performing simple optimizations).
+
+7.34.1. Running ICE40 specific optimizations.
+
+7.34.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~1 debug messages>
+
+7.34.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 992 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.34.4. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $auto$ff.cc:337:slice$4175 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[0], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4178 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[1], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4181 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[2], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4184 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[3], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4187 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[4], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4190 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[5], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4193 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[6], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4196 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[7], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4199 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[8], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4202 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[9], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4205 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[10], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4208 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[11], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4211 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[12], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4214 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[13], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4217 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[14], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4220 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[15], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4223 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[16], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4226 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[17], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4229 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[18], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4232 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[19], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4235 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[20], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4238 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[21], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4241 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[22], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4244 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[23], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4247 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[24], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4250 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[25], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4253 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[26], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4256 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[27], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4259 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[28], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4262 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[29], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4265 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[30], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4268 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[31], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4271 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[32], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4274 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[33], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4277 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[34], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4280 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[35], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4283 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[36], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4286 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[37], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4289 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[38], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4292 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[39], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4295 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[40], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4298 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[41], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4301 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[42], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4304 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[43], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4307 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[44], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4310 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[45], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4313 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[46], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4316 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[47], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4319 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[48], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4322 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[49], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4325 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[50], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4328 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[51], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4331 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[52], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4334 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[53], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4337 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[54], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4340 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[55], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4343 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[56], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4346 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[57], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4349 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[58], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4352 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[59], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4355 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[60], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4358 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[61], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4361 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[62], rval = 1'0).
+Adding SRST signal on $auto$ff.cc:337:slice$4365 ($_DFFE_PP_) from module direct_mapped_cache (D = $auto$rtlil.cc:3201:ReduceOr$1698, Q = \metadata.valids[63], rval = 1'0).
+
+7.34.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 64 unused cells and 65 unused wires.
+<suppressed ~65 debug messages>
+
+7.34.6. Rerunning OPT passes. (Removed registers in this run.)
+
+7.34.7. Running ICE40 specific optimizations.
+
+7.34.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.34.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 928 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.34.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.34.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.34.12. Finished OPT passes. (There is nothing left to do.)
+
+7.35. Executing DFFLEGALIZE pass (convert FFs and LATCHes to types supported by the target).
+
+7.36. Executing TECHMAP pass (map to technology primitives).
+
+7.36.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+7.36.2. Continuing TECHMAP pass.
+Using template $_SDFFCE_PP0P_ for cells of type $_SDFFCE_PP0P_.
+Using template $_DFF_P_ for cells of type $_DFF_P_.
+Using template $_SDFF_PP0_ for cells of type $_SDFF_PP0_.
+No more expansions possible.
+<suppressed ~298 debug messages>
+
+7.37. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.38. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+7.39. Executing ICE40_OPT pass (performing simple optimizations).
+
+7.39.1. Running ICE40 specific optimizations.
+
+7.39.2. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+<suppressed ~4 debug messages>
+
+7.39.3. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 1092 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Computing hashes of 996 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+<suppressed ~288 debug messages>
+Removed a total of 96 cells.
+
+7.39.4. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.39.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+Removed 0 unused cells and 1530 unused wires.
+<suppressed ~1 debug messages>
+
+7.39.6. Rerunning OPT passes. (Removed registers in this run.)
+
+7.39.7. Running ICE40 specific optimizations.
+
+7.39.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.39.9. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 996 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.39.10. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.39.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.39.12. Finished OPT passes. (There is nothing left to do.)
+
+7.40. Executing CHECK pass (checking for obvious problems).
+Checking module direct_mapped_cache...
+Found and reported 0 problems.
+
+7.41. Executing TECHMAP pass (map to technology primitives).
+
+7.41.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/latches_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/latches_map.v' to AST representation.
+Generating RTLIL representation for module `$_DLATCH_N_'.
+Generating RTLIL representation for module `$_DLATCH_P_'.
+Successfully finished Verilog frontend.
+
+7.41.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+7.42. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/abc9_model.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ICE40_CARRY_WRAPPER'.
+Successfully finished Verilog frontend.
+
+7.43. Executing ABC9 pass.
+
+7.43.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.3. Executing SCC pass (detecting logic loops).
+Found 0 SCCs in module direct_mapped_cache.
+Found 0 SCCs.
+
+7.43.4. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.5. Executing TECHMAP pass (map to technology primitives).
+
+7.43.5.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.43.5.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~130 debug messages>
+
+7.43.6. Executing OPT pass (performing simple optimizations).
+
+7.43.6.1. Executing OPT_EXPR pass (perform const folding).
+
+7.43.6.2. Executing OPT_MERGE pass (detect identical cells).
+Removed a total of 0 cells.
+
+7.43.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Removed 0 multiplexer ports.
+
+7.43.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+Performed a total of 0 changes.
+
+7.43.6.5. Executing OPT_MERGE pass (detect identical cells).
+Removed a total of 0 cells.
+
+7.43.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.43.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+
+7.43.6.8. Executing OPT_EXPR pass (perform const folding).
+
+7.43.6.9. Finished fast OPT passes. (There is nothing left to do.)
+
+7.43.7. Executing TECHMAP pass (map to technology primitives).
+
+7.43.7.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_map.v' to AST representation.
+Lexer warning: The SystemVerilog keyword `bit' (at /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_map.v:35) is not recognized unless read_verilog is called with -sv!
+Generating RTLIL representation for module `$__ABC9_BARRIER_MAP'.
+Successfully finished Verilog frontend.
+
+7.43.7.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+7.43.8. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_model.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_model.v' to AST representation.
+Generating RTLIL representation for module `$__ABC9_DELAY'.
+Generating RTLIL representation for module `$__ABC9_BARRIER'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__DFF_N__$abc9_flop'.
+Generating RTLIL representation for module `$__DFF_P__$abc9_flop'.
+Successfully finished Verilog frontend.
+
+7.43.9. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~676 debug messages>
+
+7.43.10. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.11. Executing ABC9_OPS pass (helper functions for ABC9).
+<suppressed ~2 debug messages>
+
+7.43.12. Executing TECHMAP pass (map to technology primitives).
+
+7.43.12.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+7.43.12.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~143 debug messages>
+
+7.43.13. Executing OPT pass (performing simple optimizations).
+
+7.43.13.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.43.13.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 0 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.43.13.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \direct_mapped_cache..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+7.43.13.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \direct_mapped_cache.
+Performed a total of 0 changes.
+
+7.43.13.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\direct_mapped_cache'.
+Computing hashes of 0 cells of `\direct_mapped_cache'.
+Finding duplicate cells in `\direct_mapped_cache'.
+Removed a total of 0 cells.
+
+7.43.13.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+7.43.13.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \direct_mapped_cache..
+
+7.43.13.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module direct_mapped_cache.
+
+7.43.13.9. Finished fast OPT passes. (There is nothing left to do.)
+
+7.43.14. Executing AIGMAP pass (map logic to AIG).
+Module direct_mapped_cache: replaced 417 cells with 2502 new cells, skipped 1253 cells.
+  replaced 3 cell types:
+     239 $_MUX_
+     139 $_OR_
+      39 $_XOR_
+  not replaced 15 cell types:
+     194 $_AND_
+     101 $_NOT_
+       4 $scopeinfo
+       4 $paramod$65b9e5893759870fd62e6b87dc6ba151fdc97e95\SB_RAM40_4K
+     210 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000011001011
+     276 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000000010101
+     110 SB_DFF
+       2 SB_DFFSR
+     164 SB_DFFESR
+      64 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000100010010
+       8 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000100001011
+       4 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000001100010
+      44 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000011100000
+      64 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000010100001
+       4 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000010000101
+
+7.43.14.1. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.14.2. Executing ABC9_OPS pass (helper functions for ABC9).
+
+7.43.14.3. Executing XAIGER2 backend.
+<suppressed ~964 debug messages>
+Extracted 2205 AND gates and 0 wires from module `direct_mapped_cache' to a netlist network with 1117 inputs and 1899 outputs.
+
+7.43.14.4. Executing ABC9_EXE pass (technology mapping using ABC9).
+
+7.43.14.5. Executing ABC9.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
+ABC: + read_lut <abc-temp-dir>/input.lut 
+ABC: + read_box <abc-temp-dir>/input.box 
+ABC: + &read <abc-temp-dir>/input.xaig 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =    443/   1225  and =    1083  lev =   18 (2.05)  mem = 0.06 MB  box = 674  bb = 674
+ABC: + &scorr 
+ABC: Warning: The network is combinational.
+ABC: + &sweep 
+ABC: + &dc2 
+ABC: + &dch -f -r 
+ABC: + &ps 
+ABC: <abc-temp-dir>/input : i/o =    443/   1225  and =    1528  lev =   19 (2.00)  mem = 0.06 MB  ch =  187  box = 674  bb = 674
+ABC: cst =       0  cls =    181  lit =     187  unused =    2277  proof =     0
+ABC: + &if -W 250 -v 
+ABC: K = 4. Memory (bytes): Truth =    0. Cut =   64. Obj =  144. Set =  672. CutMin = no
+ABC: Node =    1528.  Ch =   181.  Total mem =    0.69 MB. Peak cut mem =    0.06 MB.
+ABC: P:  Del = 4801.00.  Ar =     474.0.  Edge =     1672.  Cut =     7605.  T =     0.00 sec
+ABC: P:  Del = 4801.00.  Ar =     462.0.  Edge =     1644.  Cut =     7549.  T =     0.00 sec
+ABC: P:  Del = 4801.00.  Ar =     421.0.  Edge =     1513.  Cut =     7695.  T =     0.00 sec
+ABC: F:  Del = 4801.00.  Ar =     412.0.  Edge =     1453.  Cut =     6696.  T =     0.00 sec
+ABC: A:  Del = 4801.00.  Ar =     409.0.  Edge =     1399.  Cut =     6798.  T =     0.00 sec
+ABC: A:  Del = 4801.00.  Ar =     407.0.  Edge =     1397.  Cut =     6871.  T =     0.00 sec
+ABC: Total time =     0.01 sec
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &mfs 
+ABC: + &ps -l 
+ABC: <abc-temp-dir>/input : i/o =    443/   1225  and =    1255  lev =   19 (1.93)  mem = 0.06 MB  box = 674  bb = 674
+ABC: Mapping (K=4)  :  lut =    406  edge =    1387  lev =    8 (0.97)  levB =    8  mem = 0.02 MB
+ABC: LUT = 406 : 2=30 7.4 %  3=177 43.6 %  4=199 49.0 %  Ave = 3.42
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &verify 
+ABC: Networks are equivalent.  Time =     0.03 sec
+ABC: + time 
+ABC: elapse: 0.18 seconds, total: 0.18 seconds
+
+7.43.14.6. Executing AIGER frontend.
+<suppressed ~10 debug messages>
+Removed 1765 unused cells and 4306 unused wires.
+
+7.43.14.7. Executing ABC_OPS_REINTEGRATE pass (reintegrate ABC mapped design into module).
+ABC RESULTS:              $lut cells:      407
+ABC RESULTS:           input signals:      188
+ABC RESULTS:          output signals:       10
+<suppressed ~1668 debug messages>
+Removing temp directory.
+
+7.43.15. Executing TECHMAP pass (map to technology primitives).
+
+7.43.15.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_unmap.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/abc9_unmap.v' to AST representation.
+Generating RTLIL representation for module `$__DFF_x__$abc9_flop'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
+Generating RTLIL representation for module `$__ABC9_BARRIER'.
+Successfully finished Verilog frontend.
+
+7.43.15.2. Continuing TECHMAP pass.
+Using template $paramod$65b9e5893759870fd62e6b87dc6ba151fdc97e95\SB_RAM40_4K for cells of type $paramod$65b9e5893759870fd62e6b87dc6ba151fdc97e95\SB_RAM40_4K.
+No more expansions possible.
+<suppressed ~11 debug messages>
+
+7.44. Executing ICE40_WRAPCARRY pass (wrap carries).
+
+7.45. Executing TECHMAP pass (map to technology primitives).
+
+7.45.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/ff_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/ff_map.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_SDFFCE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFCE_PP1P_'.
+Successfully finished Verilog frontend.
+
+7.45.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~22 debug messages>
+Removed 207 unused cells and 2646 unused wires.
+
+7.46. Executing OPT_LUT pass (optimize LUTs).
+Discovering LUTs.
+Number of LUTs:      409
+  1-LUT                1
+  2-LUT               31
+  3-LUT              177
+  4-LUT              200
+  with \SB_CARRY    (#0)    0
+  with \SB_CARRY    (#1)    0
+
+Eliminating LUTs.
+Number of LUTs:      409
+  1-LUT                1
+  2-LUT               31
+  3-LUT              177
+  4-LUT              200
+  with \SB_CARRY    (#0)    0
+  with \SB_CARRY    (#1)    0
+
+Combining LUTs.
+Number of LUTs:      409
+  1-LUT                1
+  2-LUT               31
+  3-LUT              177
+  4-LUT              200
+  with \SB_CARRY    (#0)    0
+  with \SB_CARRY    (#1)    0
+
+Eliminated 0 LUTs.
+Combined 0 LUTs.
+<suppressed ~1686 debug messages>
+
+7.47. Executing TECHMAP pass (map to technology primitives).
+
+7.47.1. Executing Verilog-2005 frontend: /opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/cells_map.v
+Parsing Verilog input from `/opt/homebrew/Cellar/yosys/0.71/bin/../share/yosys/ice40/cells_map.v' to AST representation.
+Generating RTLIL representation for module `$lut'.
+Successfully finished Verilog frontend.
+
+7.47.2. Continuing TECHMAP pass.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0001 for cells of type $lut.
+Using template $paramod$498daa9936ffa1c0b12d774cacc95a35d14b818e$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10101100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000000 for cells of type $lut.
+Using template $paramod$712505941a295086314c22735153725461a87f4a$lut for cells of type $lut.
+Using template $paramod$2ec6422db00d358fc7469efce6208bffbc8521cd$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010011 for cells of type $lut.
+Using template $paramod$5a621b016c894274d07edef48c49b401a15fd796$lut for cells of type $lut.
+Using template $paramod$e6a488add0b5a2d742e2ae29f62ce7616e04271d$lut for cells of type $lut.
+Using template $paramod$068092ddede495d8462ffe530e6d91711913edbc$lut for cells of type $lut.
+Using template $paramod$db08fd84fb3c4d6a41eaec6adfffe445fb7eb17f$lut for cells of type $lut.
+Using template $paramod$a1d323730045824cfc84bb9f4ee8031f1c4dcc9e$lut for cells of type $lut.
+Using template $paramod$c6bcc46fa3ab3e93fb9e1dd465343adac18fec92$lut for cells of type $lut.
+Using template $paramod$d204630841d4b2793bc7d88db78fa2d9975da1ca$lut for cells of type $lut.
+Using template $paramod$101238f3d8d49ab12a9b49a2f01cd503b26e9c61$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10111000 for cells of type $lut.
+Using template $paramod$8512f4fb47fa9596f76cdbe5b407a5b54df368e7$lut for cells of type $lut.
+Using template $paramod$c28a8b7ce0535d090c4cfb52e9c74affd52b110c$lut for cells of type $lut.
+Using template $paramod$f9813472aa48e533b3838c6f2316dc2e78c66111$lut for cells of type $lut.
+Using template $paramod$272652f6c6fbe9a75eff76e45cc7e2788835518b$lut for cells of type $lut.
+Using template $paramod$571404c0889eaf57f492cb5e37f8acb5df5852f9$lut for cells of type $lut.
+Using template $paramod$6be53ab59e0a69757fc32adb071ddcb64e8c87b6$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1101 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01010100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10101000 for cells of type $lut.
+Using template $paramod$018d71a0fe325d6362687fe53ac13dd6340e400d$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11100100 for cells of type $lut.
+Using template $paramod$baa9d2fb2d21010939721b85aa9f11effe0b53c4$lut for cells of type $lut.
+Using template $paramod$94ac66a11090dca84889e55fcf03297912a5b7ec$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10110001 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11000100 for cells of type $lut.
+Using template $paramod$8d7a8d6e3356de09670738ba85f2c6b874f6b06d$lut for cells of type $lut.
+Using template $paramod$4d5682dd6afedfd6df0816b3bca3365bbde91748$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001011 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0100 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'0010 for cells of type $lut.
+Using template $paramod$94d2f1f461ef911482e15efdba185521de732c99$lut for cells of type $lut.
+Using template $paramod$eb764785a67ae0903625e17df40813438d0457e8$lut for cells of type $lut.
+Using template $paramod$4beade702c2f387a77c3f89db4f631e06b3ae32d$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000100 for cells of type $lut.
+Using template $paramod$5183b4454493323aca6310872659274580528fcf$lut for cells of type $lut.
+Using template $paramod$800ad51c173ef1531dc8c2197ac409be85e8cb0a$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10000000 for cells of type $lut.
+Using template $paramod$b287726797d0722f64e731f1134f7c05af8f1578$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1110 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00100000 for cells of type $lut.
+Using template $paramod$658b9ed803f0d3d335616d3858b53e0a2522f1e8$lut for cells of type $lut.
+Using template $paramod$1816ab9d89d34338423e92baed3cee854d70815a$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000001 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001000 for cells of type $lut.
+Using template $paramod$df196ed0a1da5c4a58c5e08a1dac304fd3fccaab$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00010000 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00000010 for cells of type $lut.
+Using template $paramod$58bd588a49a6a3b9d057d75f907cb4932e1635f6$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000010\LUT=4'1011 for cells of type $lut.
+Using template $paramod$f969aefcb5fdd29444244ce17e4806b1ebc6f568$lut for cells of type $lut.
+Using template $paramod$179512a187da069f3b79ef6612a41e494e7d54b6$lut for cells of type $lut.
+Using template $paramod$2955ab75367a3dc9d6f50d3655eebcd4f615031f$lut for cells of type $lut.
+Using template $paramod$41326ad8644342a66dfb051d050f2b6fbf15015b$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01000111 for cells of type $lut.
+Using template $paramod$09deb89cf77b6e37f6ed7fef8d797dc05c0b2eee$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00110001 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'01100000 for cells of type $lut.
+Using template $paramod$b79d063c35fb8ca017e5223b2fa147fa469da150$lut for cells of type $lut.
+Using template $paramod$6b0849254d6c87461fb93e37cc18f089f61eb912$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11100010 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'00001110 for cells of type $lut.
+Using template $paramod$30305e55a780880b9c824fe3509a4d981acb0f2b$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$a8f554bb04e997796534a7dd766c8bb82563c4d4$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'10001111 for cells of type $lut.
+Using template $paramod$048d747237dc7c0c9b3ac38b28fd102440b9c369$lut for cells of type $lut.
+Using template $paramod$47b2f5a9f58cb4be072657772748a1ab82d6819a$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11001010 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11111000 for cells of type $lut.
+Using template $paramod$2054e486c979b759b6f4f7df3aeef508bad324ef$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11110111 for cells of type $lut.
+Using template $paramod$4c8de682f2508054a5f7f13444038e3331866a9d$lut for cells of type $lut.
+Using template $paramod$bff60da521de773f8caf46fbc0845c3d7d3e2310$lut for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000011\LUT=8'11101010 for cells of type $lut.
+No more expansions possible.
+<suppressed ~1303 debug messages>
+Removed 0 unused cells and 913 unused wires.
+
+7.48. Executing AUTONAME pass.
+Renamed 1099 objects in module direct_mapped_cache.
+<suppressed ~1099 debug messages>
+
+7.49. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `direct_mapped_cache'. Setting top module to direct_mapped_cache.
+
+7.49.1. Analyzing design hierarchy..
+Top module:  \direct_mapped_cache
+
+7.49.2. Analyzing design hierarchy..
+Top module:  \direct_mapped_cache
+Removed 0 unused modules.
+
+7.50. Printing statistics.
+
+=== direct_mapped_cache ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      507 wires
+     1257 wire bits
+      507 public wires
+     1257 public wire bits
+       20 ports
+      206 port bits
+        8 cells
+        4   $scopeinfo
+        4   SB_RAM40_4K
+      685 submodules
+      110   SB_DFF
+      164   SB_DFFESR
+        2   SB_DFFSR
+      409   SB_LUT4
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+        8 direct_mapped_cache
+
+        +----------Count including submodules.
+        | 
+      507 wires
+     1257 wire bits
+      507 public wires
+     1257 public wire bits
+       20 ports
+      206 port bits
+        - memories
+        - memory bits
+        - processes
+        8 cells
+        4   $scopeinfo
+        4   SB_RAM40_4K
+      685 submodules
+      110   SB_DFF
+      164   SB_DFFESR
+        2   SB_DFFSR
+      409   SB_LUT4
+
+7.51. Executing CHECK pass (checking for obvious problems).
+Checking module direct_mapped_cache...
+Found and reported 0 problems.
+
+7.52. Executing JSON backend.
+
+8. Executing Verilog backend.
+
+8.1. Executing BMUXMAP pass.
+
+8.2. Executing DEMUXMAP pass.
+Dumping module `\direct_mapped_cache'.
+
+9. Printing statistics.
+
+=== direct_mapped_cache ===
+
+        +----------Local Count, excluding submodules.
+        | 
+      507 wires
+     1257 wire bits
+      507 public wires
+     1257 public wire bits
+       20 ports
+      206 port bits
+      693 cells
+        4   $scopeinfo
+      110   SB_DFF
+      164   SB_DFFESR
+        2   SB_DFFSR
+      409   SB_LUT4
+        4   SB_RAM40_4K
+

@@ -3,3 +3,6 @@ __pycache__/
 .DS_Store
 .chart-data-*/
 output/presentation/~$*
+
+# Extracted copies of the submission ZIP are not source files.
+/output/Cache_Controller_Project/

@@ -8,7 +8,13 @@ module cache_tb;
     wire [31:0] rsp_data;
     wire mv, mr, mw, rv, he, me;
     wire [31:0] ma, md, rd;
+`ifdef BASELINE
+    no_cache_controller #(.CACHE_BYTES(CACHE_BYTES), .BLOCK_BYTES(BLOCK_BYTES)) dut(
+`elsif NETLIST
+    direct_mapped_cache dut(
+`else
     direct_mapped_cache #(.CACHE_BYTES(CACHE_BYTES), .BLOCK_BYTES(BLOCK_BYTES)) dut(
+`endif
         .clk(clk), .reset(reset), .cpu_req_valid(req_valid), .cpu_req_ready(req_ready),
         .cpu_req_write(req_write), .cpu_req_addr(req_addr), .cpu_req_wdata(req_wdata),
         .cpu_rsp_valid(rsp_valid), .cpu_rsp_ready(rsp_ready), .cpu_rsp_rdata(rsp_data),
@@ -70,6 +76,9 @@ module cache_tb;
             index=(address/BLOCK_BYTES) % (CACHE_BYTES/BLOCK_BYTES);
             tag_value=address/CACHE_BYTES;
             expected_hit=valids[index] && tags[index]==tag_value;
+`ifdef BASELINE
+            expected_hit=0;
+`endif
             expected_data=op ? 0 : reference[address/4];
             if (!op && !expected_hit) begin valids[index]=1; tags[index]=tag_value; end
             if (op) reference[address/4]=value;

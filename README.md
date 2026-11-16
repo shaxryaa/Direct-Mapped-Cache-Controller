@@ -2,96 +2,153 @@
 
 Modern Computer Architecture - B.Tech (CS & AI), Project 6.
 
-A synthesizable, blocking, 1 KB direct-mapped cache with 16-byte blocks,
-32-bit byte addresses, aligned 32-bit reads/writes, and write-through /
-no-write-allocate. Includes independently checked simulations, deterministic
-traces, a memory model with stalls, performance analysis, and generic synthesis.
+A modular, synthesizable blocking cache with 1 KB data capacity, 16-byte blocks,
+32-bit byte addresses, aligned word reads/writes and write-through /
+no-write-allocate. Includes independent scoreboards, actual waveform checks,
+a no-cache baseline, and reference FPGA resource/timing analysis.
 
-## Start here
+## Submission links
 
-1. Read `docs/REPORT.md` for the architecture and results.
-2. Read `docs/DEMO_AND_VIVA.md` to prepare for the demonstration.
-3. Run `python3 scripts/run.py` to reproduce the experiment.
-4. Open `results/summary.md` for the measured results.
-5. Open `results/directed.vcd` in a waveform viewer for the short demo trace.
+- **Repository:** [Direct-Mapped-Cache-Controller](https://github.com/shaxryaa/Direct-Mapped-Cache-Controller)
+- **IEEE report:** [PDF](output/pdf/Cache_Controller_Report.pdf) / [editable Markdown source](docs/REPORT.md)
+- **Prototype demonstration:** [MP4](output/video/Cache_Controller_Demo.mp4) / [direct video link](https://raw.githubusercontent.com/shaxryaa/Direct-Mapped-Cache-Controller/main/output/video/Cache_Controller_Demo.mp4)
+- **Video captions:** [WebVTT](output/video/Cache_Controller_Demo.vtt) / [transcript](docs/VIDEO_SCRIPT.md)
+- **Presentation:** [editable PPTX](output/presentation/Direct_Mapped_Cache_Slides.pptx)
+- **Rubric audit and remaining actions:** [submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
-## Requirements and commands
+The demonstration uses synthetic narration over actual recorded simulation
+evidence. It introduces both actual members and shows source code, diagrams,
+PASS logs, waveform, requests/results, baseline comparison and FPGA timing.
+It is not a live desktop screen recording. Its duration is measured with FFprobe
+and saved in `results/video_verification.json`.
 
-Requires Python 3 (standard library only for verification), Icarus Verilog
-(`iverilog`, `vvp`), and Yosys. On macOS:
+## Actual group and responsibilities
+
+| Member | Roll number | GitHub | Responsibilities |
+|---|---|---|---|
+| Shaurya Sharma | 2401010439 | [shaxryaa](https://github.com/shaxryaa) | RTL, testbenches, memory model, traces, simulation, analysis and synthesis |
+| Lakshay Saharan | 2401020034 | [LakshaySaharan](https://github.com/LakshaySaharan) | Report, slides and video preparation |
+
+The group has **two actual members**. The rubric asks for five names, so faculty
+confirmation of the smaller group is still required.
+
+## Reproduce functional verification
+
+Requires Python 3, Icarus Verilog (`iverilog`, `vvp`) and Yosys.
 
 ```sh
+# macOS
 brew install icarus-verilog yosys
 python3 scripts/run.py
 ```
 
-On Ubuntu/Debian:
-
 ```sh
+# Ubuntu/Debian
 sudo apt-get install iverilog yosys python3
 python3 scripts/run.py
 ```
 
-Equivalent: `make`. Simulation without synthesis: `make test`.
-The runner stops on a simulation failure, data mismatch, hit/miss mismatch,
-incorrect memory traffic, or synthesis error. No FPGA board is required.
+Simulation without generic synthesis: `python3 scripts/run.py --skip-synthesis`.
+The standard runner checks 9252 cache transactions across two geometries and
+4626 no-cache transactions, plus dedicated reset scenarios. It stops on errors.
+The standard verification scripts use only Python's standard library.
 
-## Files
+## Reproduce reference FPGA results
+
+```sh
+# macOS
+brew install nextpnr-ice40
+python3 scripts/run_fpga.py
+```
+
+Target: **Lattice iCE40 HX8K, CT256, seed 1, 25 MHz constraint**. The final
+post-route report estimates **75.35 MHz internal Fmax**, using **610/7680 logic
+cells**, **4/32 RAM blocks** and **206/206 IO cells**. All IOs are automatically
+placed, with no external input/output delay constraints. This is a reference
+build, not a board measurement. The wide interface uses the whole package IO
+budget; physical board integration needs a suitable host interface and pin map.
+No board programming was performed.
+
+The FPGA runner additionally simulates the mapped primitive netlist against all
+eight traces and checks that all 4626 result rows match the RTL exactly.
+Together the flows check **18,504 trace transactions**, plus reset tests.
+
+## Main results
+
+| Workload | Hit rate | Cache response cycles | No-cache response cycles |
+|---|---:|---:|---:|
+| Repeated | 96.88% | 4.932 | 9.004 |
+| Sequential | 75.00% | 11.497 | 9.002 |
+| Conflict | 0.00% | 33.988 | 9.008 |
+
+Repeated reads improve mean response latency by **1.826x**. Serial four-word
+refill makes misses expensive, so the cache is slower than the baseline for
+sequential and conflict traces in this memory model. Hit rate alone does not
+establish a latency improvement. See [all performance results](results/summary.md)
+and the [baseline comparison](results/baseline_comparison.md).
+
+## Architecture and files
+
+![System architecture](docs/assets/architecture.png)
 
 | Path | Purpose |
 |---|---|
-| `rtl/direct_mapped_cache.v` | Synthesizable cache storage, decode, compare, FSM and memory interface |
-| `tb/main_memory.v` | Test-only 64 KB memory, 5-cycle latency and periodic acceptance stalls |
-| `tb/cache_tb.sv` | Independent data/tag scoreboard and handshake stability checks |
-| `tb/reset_tb.sv` | Reset invalidation and outstanding-transaction cancellation tests |
-| `scripts/generate_traces.py` | Eight reproducible access workloads |
-| `scripts/analyze.py` | Independent Python oracle and AMAT/statistics calculation |
-| `scripts/run.py` | Complete experiment and verification runner |
-| `scripts/synthesize.ys` | Generic Yosys synthesis, structural check and statistics |
-| `traces/` | Input files: decimal operation, hexadecimal byte address and write data |
-| `results/` | Checked transaction CSVs, simulation logs, statistics and waveform |
-| `docs/` | Report, architecture/FSM diagrams, demo and viva material |
-| `output/` | PDF report and editable presentation |
-| `build/` | Regenerable simulator binaries, synthesized netlist and artifact previews |
+| `rtl/direct_mapped_cache.v` | Request registers, seven-state FSM and memory interface |
+| `rtl/cache_data_ram.v` | Synchronous data RAM, separate read/write ports |
+| `rtl/cache_metadata.v` | Tags and resettable valid bits |
+| `rtl/cache_address_decoder.v` | Tag/index/word/block-base decoding |
+| `rtl/cache_tag_comparator.v` | Valid and tag equality check |
+| `rtl/no_cache_controller.v` | Controlled uncached baseline |
+| `tb/cache_tb.sv` | Data/tag scoreboard, stall assertions and memory checks |
+| `tb/reset_tb.sv` | Reset invalidation and outstanding-transaction cancellation |
+| `tb/main_memory.v` | Test-only 64 KB memory with latency and stalls |
+| `scripts/run.py` | Full RTL/baseline regression and generic synthesis |
+| `scripts/run_fpga.py` | Device synthesis, place/route and netlist regression |
+| `scripts/build_figures.py` | Diagrams, VCD handshake verification and waveform plot |
+| `traces/` | Eight deterministic input traces |
+| `results/` | Actual checked CSVs, logs, waveform and hardware statistics |
+| `docs/` | Maintained report, diagrams, credits, demonstration material and audit |
+| `output/` | Submission PDF, PPTX, MP4, captions and ZIP |
+| `build/` | Regenerable tools, intermediate frames and mapped netlists (ignored) |
 
 ## Interface contract
 
-A CPU request transfers on a rising edge with `cpu_req_valid && cpu_req_ready`.
-The sender holds valid/address/write/data stable until acceptance. A response
-transfers with `cpu_rsp_valid && cpu_rsp_ready`; data and hit remain stable under
-backpressure. Only one CPU request is outstanding. A write completes after the
-backing-memory acknowledgement. Write responses have data zero.
+A CPU request transfers on a rising edge with valid and ready both high. Hold
+valid and payload stable until acceptance. CPU responses use the same contract.
+Only one request is outstanding. Write responses return zero after backing-memory
+acknowledgement. Memory requests use valid/ready and receive one registered
+response pulse at least one edge later; there is no memory response-ready input.
 
-Memory requests use the same valid/ready acceptance rule. Memory returns exactly
-one response per accepted request, at least one rising edge later. Memory has
-no response-ready signal: it must pulse `mem_rsp_valid` for one clock when the
-cache is in its wait state. CPU, cache and memory share the clock. Synchronous,
-active-high reset aborts outstanding work; reset the memory interface alongside
-the cache so an old response cannot arrive after reset. A production memory
-controller must cancel outstanding requests or tag responses accordingly.
+All interfaces share one clock. Active-high synchronous reset invalidates the
+cache and aborts outstanding work. Reset/cancel the memory interface alongside
+the cache so old responses cannot arrive afterward. Supported geometries have
+power-of-two sizes, at least two lines, at least two words per block and positive
+tag width. Checked geometries are 1024/16 and 512/32 bytes. The simulation memory
+covers 64 KB; RTL addresses remain 32 bits. No byte/halfword stores, unaligned
+requests, memory-error responses, coherence or virtual memory are implemented.
 
-Supported parameter configurations use power-of-two cache and block sizes,
-at least two lines and at least two words per block, and a positive tag width.
-The checked configurations are 1024/16 and 512/32 bytes. Word width is fixed at
-32 bits. Misaligned, byte and halfword accesses, memory errors and coherence are
-outside this interface. The test memory restricts addresses to 0..65535; the RTL
-address path remains 32 bits.
+## Report, figures and video maintenance
 
-## Synthesis interpretation
+`docs/REPORT.md` is the editable source; the PDF is the submission export.
+They are two formats of one report. Update the source, then rebuild the export.
+Artifact generation needs an optional Python environment:
 
-`results/synthesis.log` and `results/synthesis_stats.json` are actual generic
-Yosys results. Arrays map into flip-flops and logic in this generic flow.
-Cell counts are not FPGA LUT/BRAM counts, silicon area, timing closure, power or
-maximum clock frequency. A board/device-specific implementation is future work.
-The 10 ns testbench clock sets simulation timing only.
+```sh
+python3 -m venv build/artifact-env
+build/artifact-env/bin/pip install -r requirements-artifacts.txt
+brew install graphviz ffmpeg
+build/artifact-env/bin/python scripts/build_figures.py
+build/artifact-env/bin/python scripts/build_report.py
+build/artifact-env/bin/python scripts/build_demo_video.py  # macOS say narration
+python3 scripts/package_project.py
+```
 
-## Rebuilding the report and slides
+The PDF exporter uses IEEE conference-style Letter pages, a full-width title,
+two 3.5-inch columns, Times text, numbered section headings and citations. It is
+not an IEEE Xplore acceptance or PDF eXpress certification. If faculty supplies
+a specific template, use that template as the final authority.
 
-Verification has no Python package dependencies. Artifact builders use the
-Codex bundled ReportLab/Matplotlib and JavaScript artifact runtime available on
-this machine; their sources are `scripts/build_report.py` and
-`scripts/build_slides.mjs`. The Markdown report and all verification sources are
-portable. `docs/REPORT.md` can also be exported to PDF with a Markdown editor.
-
-**Student:** Lakshay Saharan — Roll No. 2401020034
-Review the design and rerun the commands so you can explain the evidence.
+The video builder uses macOS `say` and verifies a duration below 300 seconds.
+The PPTX builder uses the bundled artifact runtime. Template-generation
+helpers require a NEW output filename and refuse to overwrite the maintained
+report. The ZIP packager refuses an outdated PDF and excludes build caches.

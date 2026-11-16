@@ -1,0 +1,26 @@
+digraph architecture {
+ graph [rankdir=TB,bgcolor="white",nodesep=.22,ranksep=.30];
+ node [shape=box,fontname="Times-Roman",fontsize=11,margin=.10];
+ edge [fontname="Times-Roman",fontsize=9];
+ cpu [label="CPU: request / response"];
+ ctrl [label="direct_mapped_cache
+Request registers and 7-state controller"];
+ dec [label="Address decoder
+tag / index / offset"];
+ meta [label="Metadata RAM
+64 tags + valid bits"];
+ cmp [label="Tag comparator
+valid AND tag match"];
+ data [label="Data RAM
+256 x 32 bits
+synchronous read"];
+ mem [label="Main-memory interface
+word read / write / acknowledge"];
+ cpu -> ctrl [label="valid / ready"];
+ ctrl -> dec; dec -> meta; meta -> cmp; dec -> cmp;
+ ctrl -> data [label="read / refill / store"];
+ cmp -> ctrl [label="hit"];
+ ctrl -> mem [label="miss or write"];
+ mem -> data [label="refill word"];
+ data -> ctrl [label="read data"];
+ {rank=same; dec;data;} }

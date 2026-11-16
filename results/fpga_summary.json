@@ -1,0 +1,35 @@
+{
+  "device": "Lattice iCE40 HX8K",
+  "package": "CT256",
+  "seed": 1,
+  "target_mhz": 25,
+  "estimated_post_route_fmax_mhz": 75.34659576416016,
+  "utilization": {
+    "ICESTORM_LC": {
+      "available": 7680,
+      "used": 610
+    },
+    "ICESTORM_PLL": {
+      "available": 2,
+      "used": 0
+    },
+    "ICESTORM_RAM": {
+      "available": 32,
+      "used": 4
+    },
+    "SB_GB": {
+      "available": 8,
+      "used": 3
+    },
+    "SB_IO": {
+      "available": 206,
+      "used": 206
+    },
+    "SB_WARMBOOT": {
+      "available": 1,
+      "used": 0
+    }
+  },
+  "netlist_verified_transactions": 4626,
+  "timing_scope": "Single-clock internal paths; automatic IO placement, no external input/output delay constraints; reference target only, no board programming."
+}

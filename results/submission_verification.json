@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "report_pages": 4,
+  "report_page_format": "Letter, IEEE conference-style two-column",
+  "checked_trace_transactions": 18504,
+  "checked_vcd_response_handshakes": 18,
+  "video_seconds": 257.811746,
+  "video_has_audio": true,
+  "actual_members": [
+    "Shaurya Sharma",
+    "Lakshay Saharan"
+  ],
+  "reference_fpga": {
+    "device": "Lattice iCE40 HX8K",
+    "package": "CT256",
+    "seed": 1,
+    "target_mhz": 25,
+    "estimated_post_route_fmax_mhz": 75.34659576416016,
+    "utilization": {
+      "ICESTORM_LC": {
+        "available": 7680,
+        "used": 610
+      },
+      "ICESTORM_PLL": {
+        "available": 2,
+        "used": 0
+      },
+      "ICESTORM_RAM": {
+        "available": 32,
+        "used": 4
+      },
+      "SB_GB": {
+        "available": 8,
+        "used": 3
+      },
+      "SB_IO": {
+        "available": 206,
+        "used": 206
+      },
+      "SB_WARMBOOT": {
+        "available": 1,
+        "used": 0
+      }
+    },
+    "netlist_verified_transactions": 4626,
+    "timing_scope": "Single-clock internal paths; automatic IO placement, no external input/output delay constraints; reference target only, no board programming."
+  },
+  "artifact_sha256": {
+    "output/pdf/Cache_Controller_Report.pdf": "8d492d40486db7dfe8ee5572ecec5f2756327eb79397e14088a48d733d8d8df6",
+    "output/presentation/Direct_Mapped_Cache_Slides.pptx": "cd13303f95d6730ec56628323a4859107001eef6ad23345f4239e98bd2b989fe",
+    "output/video/Cache_Controller_Demo.mp4": "4600edb5ada8a3beae7fe7f19b16e003672afc8da364089ff9344805cd249cc4",
+    "output/video/Cache_Controller_Demo.vtt": "7cd711c814c3ac64d4ce48368a2fef60d36dcd93a66c631567a20548ed3383d9"
+  },
+  "external_actions": [
+    "Faculty confirmation of two-member group against five-member wording",
+    "Course form submission: URL not provided",
+    "Student live demonstration"
+  ]
+}
