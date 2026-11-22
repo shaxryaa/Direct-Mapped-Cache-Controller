@@ -12,7 +12,7 @@ a no-cache baseline, and reference FPGA resource/timing analysis.
 - **Repository:** [Direct-Mapped-Cache-Controller](https://github.com/shaxryaa/Direct-Mapped-Cache-Controller)
 - **IEEE report:** [PDF](output/pdf/Cache_Controller_Report.pdf) / [editable Markdown source](docs/REPORT.md)
 - **Prototype demonstration:** [MP4](output/video/Cache_Controller_Demo.mp4) / [direct video link](https://raw.githubusercontent.com/shaxryaa/Direct-Mapped-Cache-Controller/main/output/video/Cache_Controller_Demo.mp4)
-- **Video captions:** [WebVTT](output/video/Cache_Controller_Demo.vtt) / [transcript](docs/VIDEO_SCRIPT.md)
+- **Video captions:** [WebVTT](output/video/Cache_Controller_Demo.vtt)
 - **Presentation:** [editable PPTX](output/presentation/Direct_Mapped_Cache_Slides.pptx)
 - **Rubric audit and remaining actions:** [submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
