@@ -1,164 +1,98 @@
 # Direct-Mapped Cache Controller
 
-Modern Computer Architecture - B.Tech (CS & AI), Project 6.
+A Verilog implementation of a direct-mapped cache between a CPU and main memory.
+The cache stores recently accessed memory blocks so later requests can reuse data
+without fetching it from main memory again. The project explores how spatial
+locality, temporal locality and address conflicts affect hit rate and response
+latency.
 
-A modular, synthesizable blocking cache with 1 KB data capacity, 16-byte blocks,
-32-bit byte addresses, aligned word reads/writes and write-through /
-no-write-allocate. Includes independent scoreboards, actual waveform checks,
-a no-cache baseline, and reference FPGA resource/timing analysis.
+## Cache organization
 
-## Submission links
+| Property | Configuration |
+|---|---|
+| Data capacity | 1 KB |
+| Cache lines | 64 |
+| Block size | 16 bytes, containing four 32-bit words |
+| Address width | 32-bit byte addresses |
+| Supported accesses | Aligned 32-bit reads and writes |
+| Mapping | Direct-mapped: one possible cache line per memory block |
+| Write policy | Write-through with no-write-allocate |
+| Outstanding CPU requests | One |
 
-- **Repository:** [Direct-Mapped-Cache-Controller](https://github.com/shaxryaa/Direct-Mapped-Cache-Controller)
-- **IEEE report:** [PDF](output/pdf/Cache_Controller_Report.pdf) / [editable Markdown source](docs/REPORT.md)
-- **Prototype demonstration:** [MP4](output/video/Cache_Controller_Demo.mp4) / [direct video link](https://raw.githubusercontent.com/shaxryaa/Direct-Mapped-Cache-Controller/main/output/video/Cache_Controller_Demo.mp4)
-- **Video captions:** [WebVTT](output/video/Cache_Controller_Demo.vtt)
-- **Presentation:** [editable PPTX](output/presentation/Direct_Mapped_Cache_Slides.pptx)
-- **Rubric audit and remaining actions:** [submission checklist](docs/SUBMISSION_CHECKLIST.md)
+Each address contains a **22-bit tag**, a **6-bit index** and a **4-bit offset**.
+The index selects one of the 64 lines. The tag identifies the memory block stored
+there. The offset selects a word and byte position within the block; supported
+word accesses have their lowest two address bits set to zero.
 
-The demonstration uses recorded narration by Shaurya Sharma and Lakshay Saharan over actual simulation
-evidence. It introduces both actual members and shows source code, diagrams,
-PASS logs, waveform, requests/results, baseline comparison and FPGA timing.
-It is not a live desktop screen recording. Its duration is measured with FFprobe
-and saved in `results/video_verification.json`.
+A request hits when the selected line is valid and its stored tag matches the
+requested tag. Addresses 0 and 1024 select the same line with different tags, so
+alternating between their blocks causes conflict misses.
 
-## Actual group and responsibilities
+## Architecture
 
-| Member | Roll number | GitHub | Responsibilities |
-|---|---|---|---|
-| Shaurya Sharma | 2401010439 | [shaxryaa](https://github.com/shaxryaa) | RTL, testbenches, memory model, traces, simulation, analysis and synthesis |
-| Lakshay Saharan | 2401020034 | [LakshaySaharan](https://github.com/LakshaySaharan) | Report, slides and video preparation |
+![Cache architecture](docs/assets/architecture.png)
 
-The group has **two actual members**. The rubric asks for five names, so faculty
-confirmation of the smaller group is still required.
+The implementation separates address decoding, tag comparison, metadata storage,
+data RAM and controller logic into Verilog modules. The data RAM uses a
+synchronous read port and a separate synchronous write port. Metadata stores a
+tag and valid bit for each line.
 
-## Reproduce functional verification
+CPU requests, CPU responses and memory requests use valid-ready handshakes.
+Transfers occur on a rising clock edge when both signals are high. A stalled
+request or response holds its valid signal and payload stable. Each accepted
+memory request receives one registered response pulse.
 
-Requires Python 3, Icarus Verilog (`iverilog`, `vvp`) and Yosys.
+## Controller operation
 
-```sh
-# macOS
-brew install icarus-verilog yosys
-python3 scripts/run.py
-```
+The controller uses seven states: `IDLE`, `LOOKUP`, `REFILL_REQ`, `REFILL_WAIT`,
+`WRITE_REQ`, `WRITE_WAIT` and `RESPONSE`.
 
-```sh
-# Ubuntu/Debian
-sudo apt-get install iverilog yosys python3
-python3 scripts/run.py
-```
+- **Read hit:** return the selected cached word.
+- **Read miss:** invalidate the selected line, fetch all four words serially,
+  and install the new tag and valid bit after the final word arrives.
+- **Write hit:** update the cached word and backing memory.
+- **Write miss:** update backing memory while preserving the existing cache line.
+- **Response:** hold the result until the CPU accepts it.
 
-Simulation without generic synthesis: `python3 scripts/run.py --skip-synthesis`.
-The standard runner checks 9252 cache transactions across two geometries and
-4626 no-cache transactions, plus dedicated reset scenarios. It stops on errors.
-The standard verification scripts use only Python's standard library.
+Write requests complete after memory acknowledges the write. Synchronous reset
+invalidates all lines and cancels outstanding controller work. The memory
+interface must reset or cancel its outstanding work alongside the cache.
 
-## Reproduce reference FPGA results
+## Verification
 
-```sh
-# macOS
-brew install nextpnr-ice40
-python3 scripts/run_fpga.py
-```
+Eight deterministic workloads exercise cold misses, block offsets, sequential
+reads, repeated reads, conflicts, random reads, mixed reads and writes, and a
+write stream. Independent Verilog and Python reference models check returned
+data and hit decisions. Tests also check backing-memory contents, stalled
+interfaces and reset behavior.
 
-Target: **Lattice iCE40 HX8K, CT256, seed 1, 25 MHz constraint**. The final
-post-route report estimates **75.35 MHz internal Fmax**, using **610/7680 logic
-cells**, **4/32 RAM blocks** and **206/206 IO cells**. All IOs are automatically
-placed, with no external input/output delay constraints. This is a reference
-build, not a board measurement. The wide interface uses the whole package IO
-budget; physical board integration needs a suitable host interface and pin map.
-No board programming was performed.
+Two cache configurations, the no-cache baseline and the synthesized FPGA
+netlist account for **18,504 checked transactions**, plus separate reset tests.
+All 18 directed-trace response handshakes are also checked against the waveform.
 
-The FPGA runner additionally simulates the mapped primitive netlist against all
-eight traces and checks that all 4626 result rows match the RTL exactly.
-Together the flows check **18,504 trace transactions**, plus reset tests.
-
-## Main results
+## Results
 
 | Workload | Hit rate | Cache response cycles | No-cache response cycles |
 |---|---:|---:|---:|
-| Repeated | 96.88% | 4.932 | 9.004 |
-| Sequential | 75.00% | 11.497 | 9.002 |
-| Conflict | 0.00% | 33.988 | 9.008 |
+| Repeated reads | 96.88% | 4.932 | 9.004 |
+| Sequential reads | 75.00% | 11.497 | 9.002 |
+| Conflicting reads | 0.00% | 33.988 | 9.008 |
 
-Repeated reads improve mean response latency by **1.826x**. Serial four-word
-refill makes misses expensive, so the cache is slower than the baseline for
-sequential and conflict traces in this memory model. Hit rate alone does not
-establish a latency improvement. See [all performance results](results/summary.md)
-and the [baseline comparison](results/baseline_comparison.md).
+Repeated reads improve mean response latency by **1.826 times** because most
+requests reuse cached data. Sequential and conflict accesses are slower than
+the baseline in this memory model: a cache miss fetches four words serially,
+while an uncached request fetches one. A higher hit rate therefore does not
+always produce a lower response latency.
 
-## Architecture and files
+Reference synthesis and routing for a **Lattice iCE40 HX8K** use **610 logic
+cells** and **four block RAMs**. Estimated internal maximum frequency is
+**75.35 MHz**, meeting the 25 MHz target. These are tool estimates with automatic
+IO placement, rather than measurements from a physical FPGA board.
 
-![System architecture](docs/assets/architecture.png)
+## Scope and extensions
 
-| Path | Purpose |
-|---|---|
-| `rtl/direct_mapped_cache.v` | Request registers, seven-state FSM and memory interface |
-| `rtl/cache_data_ram.v` | Synchronous data RAM, separate read/write ports |
-| `rtl/cache_metadata.v` | Tags and resettable valid bits |
-| `rtl/cache_address_decoder.v` | Tag/index/word/block-base decoding |
-| `rtl/cache_tag_comparator.v` | Valid and tag equality check |
-| `rtl/no_cache_controller.v` | Controlled uncached baseline |
-| `tb/cache_tb.sv` | Data/tag scoreboard, stall assertions and memory checks |
-| `tb/reset_tb.sv` | Reset invalidation and outstanding-transaction cancellation |
-| `tb/main_memory.v` | Test-only 64 KB memory with latency and stalls |
-| `scripts/run.py` | Full RTL/baseline regression and generic synthesis |
-| `scripts/run_fpga.py` | Device synthesis, place/route and netlist regression |
-| `scripts/build_figures.py` | Diagrams, VCD handshake verification and waveform plot |
-| `traces/` | Eight deterministic input traces |
-| `results/` | Actual checked CSVs, logs, waveform and hardware statistics |
-| `docs/` | Maintained report, diagrams, credits, demonstration material and audit |
-| `output/` | Submission PDF, PPTX, MP4, captions and ZIP |
-| `build/` | Regenerable tools, intermediate frames and mapped netlists (ignored) |
-
-## Interface contract
-
-A CPU request transfers on a rising edge with valid and ready both high. Hold
-valid and payload stable until acceptance. CPU responses use the same contract.
-Only one request is outstanding. Write responses return zero after backing-memory
-acknowledgement. Memory requests use valid/ready and receive one registered
-response pulse at least one edge later; there is no memory response-ready input.
-
-All interfaces share one clock. Active-high synchronous reset invalidates the
-cache and aborts outstanding work. Reset/cancel the memory interface alongside
-the cache so old responses cannot arrive afterward. Supported geometries have
-power-of-two sizes, at least two lines, at least two words per block and positive
-tag width. Checked geometries are 1024/16 and 512/32 bytes. The simulation memory
-covers 64 KB; RTL addresses remain 32 bits. No byte/halfword stores, unaligned
-requests, memory-error responses, coherence or virtual memory are implemented.
-
-## Report, figures and video maintenance
-
-`docs/REPORT.md` is the editable source; the PDF is the submission export.
-They are two formats of one report. Update the source, then rebuild the export.
-Artifact generation needs an optional Python environment:
-
-```sh
-python3 -m venv build/artifact-env
-build/artifact-env/bin/pip install -r requirements-artifacts.txt
-brew install graphviz ffmpeg
-build/artifact-env/bin/python scripts/build_figures.py
-build/artifact-env/bin/python scripts/build_report.py
-# Optional earlier synthetic version (overwrites the approved human video):
-# build/artifact-env/bin/python scripts/build_demo_video.py
-python3 scripts/package_project.py
-```
-
-The PDF exporter uses IEEE conference-style Letter pages, a full-width title,
-two 3.5-inch columns, Times text, numbered section headings and citations. It is
-not an IEEE Xplore acceptance or PDF eXpress certification. If faculty supplies
-a specific template, use that template as the final authority.
-
-The approved video uses the two members' original recordings and runs for about
-4 minutes 47 seconds, with selectable captions and speech-timed visuals.
-`scripts/build_human_video.py` assembles the human version from local audio,
-word-timestamp transcripts and an edit manifest in `build/human_video/`. These
-local recording inputs are required to rebuild it. The earlier synthetic
-builder uses macOS `say`; running it replaces the approved submission video.
-The saved PPTX can be edited directly in PowerPoint or compatible software.
-The optional PPTX builder currently uses author-machine paths to the bundled
-artifact runtime and its validation helpers; it is not a portable slide rebuild
-command on a fresh checkout. This does not affect the RTL or FPGA flows.
-Template-generation
-helpers require a NEW output filename and refuse to overwrite the maintained
-report. The ZIP packager refuses an outdated PDF and excludes build caches.
+The controller supports one outstanding request, aligned word accesses and a
+shared clock. It does not implement byte stores, burst refill, a write buffer,
+cache coherence or memory-error handling. Burst transfers could reduce serial
+refill overhead, while a write buffer could reduce the time the CPU waits for
+writes to reach memory.
