@@ -1,9 +1,26 @@
 {
-  "duration_seconds": 257.811746,
+  "duration_seconds": 287.031495,
+  "under_five_minutes": true,
+  "streams": [
+    {
+      "type": "video",
+      "codec": "h264"
+    },
+    {
+      "type": "audio",
+      "codec": "aac"
+    },
+    {
+      "type": "subtitle",
+      "codec": "mov_text"
+    }
+  ],
+  "narration": "Original human recordings; no synthetic speech",
+  "audio_processing": "70 Hz high-pass; per-section EBU loudness normalization; short edge fades",
+  "captions": "Local ASR with word timestamps; review captions for recognition errors",
   "maximum_allowed_seconds": 300,
-  "under_limit": true,
-  "scene_count": 10,
   "has_audio": true,
-  "narration": "macOS Samantha synthetic voice",
-  "source": "Actual source files, checked simulation logs/CSVs, VCD plot and FPGA results; recorded-evidence walkthrough, not a live desktop recording."
+  "scene_count": 22,
+  "source": "Human narration by Shaurya Sharma and Lakshay Saharan over actual project slides, RTL, simulation evidence, report pages and results.",
+  "review_status": "Approved by Shaurya Sharma"
 }

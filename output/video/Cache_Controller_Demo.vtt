@@ -1,189 +1,201 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:07.455
-A direct-mapped cache controller stores recently used memory blocks to reduce
-repeated access latency.
+00:00:01.670 --> 00:00:13.330
+Hello, I am Shaurya Sharma. I worked on Verilog implementation,
+test benches,
 
-00:00:07.455 --> 00:00:13.313
-This prototype uses one kilobyte of cache data and sixteen-byte blocks.
+00:00:13.950 --> 00:00:16.970
+simulation and performance analysis and synthesis.
 
-00:00:13.313 --> 00:00:21.834
-The actual group members are Shaurya Sharma, roll number 2401010439, and Lakshay
-Saharan, roll number 2401020034.
+00:00:17.910 --> 00:00:19.550
+Hello, I'm Lakshay Saharan.
 
-00:00:21.834 --> 00:00:24.496
-Shaurya handles implementation and analysis.
+00:00:19.990 --> 00:00:23.750
+I worked on the project report, presentation slides, and the
+demonstration
 
-00:00:24.496 --> 00:00:28.224
-Lakshay handles the report, slides and video.
+00:00:23.750 --> 00:00:28.610
+video. Our project studies how a cache between the CPU and the
+main memory
 
-00:00:28.224 --> 00:00:33.549
-This walkthrough uses synthetic narration and actual recorded simulation
-evidence..
+00:00:28.610 --> 00:00:31.770
+handles, requests, and the benefits from the locality.
 
-00:00:34.149 --> 00:00:38.521
-The cache sits between a CPU request interface and backing memory.
+00:00:33.150 --> 00:00:37.370
+The cache stores 1 kilobyte of data using 16 byte blocks.
 
-00:00:38.521 --> 00:00:43.290
-The address decoder separates a twenty-two-bit tag, six-bit index and four-bit
-offset.
+00:00:37.950 --> 00:00:42.510
+Our report explains the design, verification method, measured
+results,
 
-00:00:43.290 --> 00:00:45.674
-Metadata stores tags and valid bits.
+00:00:42.790 --> 00:00:46.710
+and the limitations. Shaurya will now demonstrate the
+implementations.
 
-00:00:45.674 --> 00:00:48.058
-The comparator checks for a hit.
+00:00:47.720 --> 00:00:54.720
+The cache has 64 lines with 4 32 bits words per line, each 32
+bit address
 
-00:00:48.058 --> 00:00:50.840
-Data RAM holds four words per line.
+00:00:54.720 --> 00:01:00.040
+contains a 22 bit tag, a 6 bit index and a 4 bit offset.
 
-00:00:50.840 --> 00:00:54.019
-Requests and responses use valid and ready handshakes.
+00:01:00.660 --> 00:01:05.140
+The index selects a line, a hit occurs when its valid bit is set
+and store
 
-00:00:54.019 --> 00:00:56.801
-The controller supports one outstanding CPU request..
+00:01:05.140 --> 00:01:06.840
+tag matches the request tag.
 
-00:00:57.401 --> 00:00:59.696
-This is the actual Verilog implementation.
+00:01:07.420 --> 00:01:12.740
+I divided the implementation into an address decoder, tag
+comparator,
 
-00:00:59.696 --> 00:01:04.669
-The top module instantiates the decoder, metadata storage, tag comparator and
-data RAM.
+00:01:13.160 --> 00:01:15.920
+metadata storage, data ram and controller.
 
-00:01:04.669 --> 00:01:11.172
-The data RAM has synchronous read and write ports, so the FPGA flow can infer
-block memories.
+00:01:15.920 --> 00:01:21.580
+Requests and responses use valid ready handshakes, the
+controller handles
 
-00:01:11.172 --> 00:01:17.293
-A word is read when the CPU request is accepted, then LOOKUP uses that
-registered word.
+00:01:21.580 --> 00:01:23.480
+one CPU request at a time.
 
-00:01:17.293 --> 00:01:20.735
-The dedicated test memory is excluded from cache synthesis..
+00:01:24.660 --> 00:01:27.500
+The controller uses seven states.
 
-00:01:21.335 --> 00:01:24.387
-IDLE accepts a request and LOOKUP checks the line.
+00:01:28.240 --> 00:01:32.580
+IDLE accepts the request and lookup checks for a hit.
 
-00:01:24.387 --> 00:01:26.421
-A read hit prepares a response.
+00:01:33.580 --> 00:01:35.880
+A read hit returns the cached word.
 
-00:01:26.421 --> 00:01:33.542
-A read miss alternates REFILL REQUEST and REFILL WAIT until all four words
-arrive, then installs the tag and valid bit.
+00:01:36.220 --> 00:01:42.360
+A read miss fetches all four words from memory, then marks the
+completed
 
-00:01:33.542 --> 00:01:35.237
-Writes use write-through with no-write-allocate.
+00:01:42.360 --> 00:01:47.780
+line valid. The write policy is write through with no write
+allocate.
 
-00:01:35.237 --> 00:01:39.645
-A write hit updates cache and memory; a write miss updates memory only.
+00:01:48.280 --> 00:01:50.720
+A write hit updates both cache and memory.
 
-00:01:39.645 --> 00:01:42.357
-The response waits until the CPU accepts it..
+00:01:51.500 --> 00:01:55.420
+A write miss updates memory without loading a new cache block.
 
-00:01:42.957 --> 00:01:46.369
-These PASS lines come from the executed testbench.
+00:01:56.280 --> 00:02:00.500
+The responses stay stable until the CPU accepts it.
 
-00:01:46.369 --> 00:01:49.354
-Eight workloads run on two cache configurations.
+00:02:01.100 --> 00:02:05.140
+Reset clears the valid bits and cancels the outstanding work
+when the
 
-00:01:49.354 --> 00:01:53.618
-Independent Verilog and Python scoreboards check hit decisions and data.
+00:02:05.140 --> 00:02:07.520
+memory interface resets along the cache.
 
-00:01:53.618 --> 00:01:58.309
-The testbench also checks backing memory and stable outputs during stalls.
+00:02:08.770 --> 00:02:11.630
+These are actual simulation results.
 
-00:01:58.309 --> 00:02:01.294
-Reset tests cover invalidation and aborted transactions.
+00:02:12.590 --> 00:02:17.750
+Independent Verilog and Python reference models check return
+data and
 
-00:02:01.294 --> 00:02:08.544
-Including the no-cache baseline and FPGA primitive netlist, eighteen thousand
-five hundred and four trace transactions passed..
+00:02:17.750 --> 00:02:19.670
+hit or miss decisions.
 
-00:02:09.144 --> 00:02:13.091
-This waveform comes directly from the simulator V C D file.
+00:02:20.390 --> 00:02:24.750
+Tests also cover writes, conflicting addresses, responses,
+stalls and
 
-00:02:13.091 --> 00:02:18.473
-The first read misses and causes four memory responses before the CPU response
-becomes valid.
+00:02:24.750 --> 00:02:29.610
+reset. In this direct trace, address 0 initially misses.
 
-00:02:18.473 --> 00:02:22.061
-Later accesses to other words in the same block hit.
+00:02:30.390 --> 00:02:35.350
+Reads at address 4, 8 and 12 then hit because the first request
+loads
 
-00:02:22.061 --> 00:02:25.290
-CPU response backpressure keeps the result stable until ready.
+00:02:35.350 --> 00:02:41.310
+the entire block. Address 1024 maps to the same cache line and
+cause a
 
-00:02:25.290 --> 00:02:32.467
-A separate checker samples every directed-trace response handshake and confirms
-that all eighteen match the checked result C S V..
+00:02:41.310 --> 00:02:46.450
+conflict miss. The waveform show a refill and the response
+handshakes.
 
-00:02:33.067 --> 00:02:35.851
-Here are actual requests from the directed trace.
+00:02:46.630 --> 00:02:54.110
+Across both cache and configurations, the baseline FPGA netlist
+18,504
 
-00:02:35.851 --> 00:02:38.287
-The first read at address zero misses.
+00:02:54.110 --> 00:02:59.550
+trace transactions passed plus separate reset tests.
 
-00:02:38.287 --> 00:02:42.812
-Reads at four, eight and twelve hit because the whole block was refilled.
+00:03:00.500 --> 00:03:04.800
+Sequential reads achieved a 75% hit rate.
 
-00:02:42.812 --> 00:02:48.381
-Address hexadecimal four hundred maps to the same line with a different tag,
-causing a conflict.
+00:03:05.200 --> 00:03:11.780
+Repeated reads achieved 96.88% while alternating conflicting
+addresses
 
-00:02:48.381 --> 00:02:51.513
-Later writes and reads verify write-through and no-write-allocate behavior.
+00:03:11.780 --> 00:03:14.460
+produce 0% hits.
 
-00:02:51.513 --> 00:02:54.994
-Every returned word and hit flag matches the independent model..
+00:03:15.080 --> 00:03:21.500
+Repeated reads were about 1.83 times faster than the no-cache
+baseline
 
-00:02:55.594 --> 00:02:57.933
-Sequential reads achieve seventy-five percent hits.
+00:03:21.500 --> 00:03:23.500
+in the mean response latency.
 
-00:02:57.933 --> 00:03:03.000
-Repeated reads over a small working set achieve ninety-six point eight eight
-percent.
+00:03:24.220 --> 00:03:30.520
+Sequentially and conflict access were slower because each cache
+miss fetches
 
-00:03:03.000 --> 00:03:05.339
-Alternating conflicting addresses achieve zero percent.
+00:03:30.520 --> 00:03:36.860
+four words serially. Reference synthesis and routing for a
+Lattice iCE40
 
-00:03:05.339 --> 00:03:15.084
-The no-cache comparison is important: repeated reads are about one point eight
-three times faster, but sequential and conflict accesses are slower with this
-cache.
+00:03:36.860 --> 00:03:44.980
+HX8K uses 610 logic cells and 4 block RAMs.
 
-00:03:15.084 --> 00:03:20.152
-A miss fetches four serial words while an uncached read fetches only one..
+00:03:44.980 --> 00:03:53.520
+The estimated internal maximum frequency was 75.35 MHz meeting
+the 25
 
-00:03:20.752 --> 00:03:27.795
-The reference implementation targets a Lattice ice forty H X eight K, C T two
-fifty-six device.
+00:03:53.520 --> 00:03:56.740
+MHz target. These are tool estimates.
 
-00:03:27.795 --> 00:03:32.766
-It uses six hundred and ten logic cells and four block memories.
+00:03:57.720 --> 00:04:00.020
+We did not test a physical FPGA board.
 
-00:03:32.766 --> 00:03:38.980
-The post-route internal maximum frequency estimate is 75.35 megahertz, meeting
-the requested twenty-five megahertz target.
+00:04:00.870 --> 00:04:06.730
+The IEEE style report includes the abstract, literature review,
+proposed
 
-00:03:38.980 --> 00:03:42.709
-IO pins are placed automatically, without external delay constraints.
+00:04:06.730 --> 00:04:10.310
+solution, individual contributions and references.
 
-00:03:42.709 --> 00:03:46.851
-These are tool estimates, not measurements from a physical board..
+00:04:11.070 --> 00:04:16.250
+It also presents the architecture, state machine, waveform and
+performance
 
-00:03:47.451 --> 00:03:55.310
-The repository contains the modular source code, testbenches, traces, waveform,
-raw results, IEEE-format report and this demonstration video.
+00:04:16.250 --> 00:04:21.270
+comparison. The slide summarizes the results for the
+demonstration.
 
-00:03:55.310 --> 00:04:00.549
-Run python three scripts slash run dot py to reproduce functional verification.
+00:04:22.350 --> 00:04:27.110
+The repository contains our Verilog modules, test benches,
+access traces,
 
-00:04:00.549 --> 00:04:07.534
-Run scripts slash run underscore F P G A dot py for reference synthesis and
-timing.
+00:04:27.710 --> 00:04:29.970
+simulation evidence, report and presentation.
 
-00:04:07.534 --> 00:04:13.646
-The actual group has two members, so the five-member rubric requirement needs
-faculty confirmation.
+00:04:29.970 --> 00:04:37.090
+Our results show that locality improves repeated access
+performance while
 
-00:04:13.646 --> 00:04:17.139
-A live presentation remains the group members responsibility..
+00:04:37.090 --> 00:04:41.090
+conflict misses and serial refill can increase latency.
+
+00:04:42.570 --> 00:04:46.470
+Possible improvements include burst refill and write buffer.
+Thank you.

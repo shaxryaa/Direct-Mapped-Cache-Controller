@@ -16,7 +16,7 @@ a no-cache baseline, and reference FPGA resource/timing analysis.
 - **Presentation:** [editable PPTX](output/presentation/Direct_Mapped_Cache_Slides.pptx)
 - **Rubric audit and remaining actions:** [submission checklist](docs/SUBMISSION_CHECKLIST.md)
 
-The demonstration uses synthetic narration over actual recorded simulation
+The demonstration uses recorded narration by Shaurya Sharma and Lakshay Saharan over actual simulation
 evidence. It introduces both actual members and shows source code, diagrams,
 PASS logs, waveform, requests/results, baseline comparison and FPGA timing.
 It is not a live desktop screen recording. Its duration is measured with FFprobe
@@ -139,7 +139,8 @@ build/artifact-env/bin/pip install -r requirements-artifacts.txt
 brew install graphviz ffmpeg
 build/artifact-env/bin/python scripts/build_figures.py
 build/artifact-env/bin/python scripts/build_report.py
-build/artifact-env/bin/python scripts/build_demo_video.py  # macOS say narration
+# Optional earlier synthetic version (overwrites the approved human video):
+# build/artifact-env/bin/python scripts/build_demo_video.py
 python3 scripts/package_project.py
 ```
 
@@ -148,7 +149,12 @@ two 3.5-inch columns, Times text, numbered section headings and citations. It is
 not an IEEE Xplore acceptance or PDF eXpress certification. If faculty supplies
 a specific template, use that template as the final authority.
 
-The video builder uses macOS `say` and verifies a duration below 300 seconds.
+The approved video uses the two members' original recordings and runs for about
+4 minutes 47 seconds, with selectable captions and speech-timed visuals.
+`scripts/build_human_video.py` assembles the human version from local audio,
+word-timestamp transcripts and an edit manifest in `build/human_video/`. These
+local recording inputs are required to rebuild it. The earlier synthetic
+builder uses macOS `say`; running it replaces the approved submission video.
 The saved PPTX can be edited directly in PowerPoint or compatible software.
 The optional PPTX builder currently uses author-machine paths to the bundled
 artifact runtime and its validation helpers; it is not a portable slide rebuild

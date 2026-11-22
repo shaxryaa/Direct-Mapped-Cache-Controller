@@ -17,7 +17,8 @@ def main():
     for directory in ('rtl', 'tb', 'scripts', 'traces', 'results', 'docs',
                       'output/pdf', 'output/presentation', 'output/video', '.github'):
         files.extend(p for p in (ROOT/directory).rglob('*')
-                     if p.is_file() and '__pycache__' not in p.parts and not p.is_symlink())
+                     if p.is_file() and '__pycache__' not in p.parts
+                     and 'human_review' not in p.parts and not p.is_symlink())
     for filename in ('cache_synth.v','cache_ice40_netlist.v','cache_ice40.asc'):
         netlist=ROOT/'build'/filename
         if netlist.is_file(): files.append(netlist)
